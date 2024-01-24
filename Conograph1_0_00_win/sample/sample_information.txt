@@ -1,0 +1,11 @@
+sample1: Silicon	Spallation neutrons	cubic (F)		quick search
+sample2: Allumina	Characteristic X-rays	rhombohedral		quick search
+sample3: Pyridone	Synchrotron		triclinic		quick search
+sample4: Cimetidine	Characteristic X-rays	monoclinic (P)		quick search
+sample5: Cimetidine	Synchrotron		monoclinic (P)		quick search
+sample6: Erythromycin	Synchrotron		orthorhombic (P)	quick search
+sample7: Glycyl-glycine	Spallation neutrons	monoclinic (P)		regurlar search
+
+These powder diffration patterns are allowed to be used for distribution of the software Conograph by the following people (2014/7/7): 
+Dr Fujii, Professor Uekusa of Tokyo Institute of Technology, 
+Dr Zhang, Dr Miao, Professor Kamiyama of KEK.

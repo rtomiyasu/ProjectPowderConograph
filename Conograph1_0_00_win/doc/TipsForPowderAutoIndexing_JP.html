@@ -1,0 +1,474 @@
+<html lang="ja">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+   body { line-height: 1.5; }
+</style>
+<head>
+<title> Conographを用いた粉末指数づけについて </title>
+</head>
+<body lang="ja">
+<DIV style="text-align:left;">
+ <DIV style="text-align:right;float:right;">
+  <A HREF="../InstructionsConograph_JP.html">［Back to main page of Conograph］</A>
+ </DIV>
+ <font size="+1"><b> Conographを用いた粉末指数づけについて </b></font>
+</DIV>
+<font size="-1" color="#339999"> [<a href="TipsForPowderAutoIndexing.html">English</a> / Japanese] </font><br>
+
+<p>
+<ul>
+    <li><a href="#ParameterTable">入力パラメータ表（XML ファイル）</a></li>
+    <li><a href="#DifferenceTwoSearches">Quick search と regular searchの主な違い</a></li>
+    <li><a href="#ModificationOfParameters">満足できる結果が得られないときに変更するパラメータ</a> </li>
+       <ol>
+          <li><a href="#ForPrudentSearch">より丁寧な探索を行う</a>:</li>
+              <ul>
+                  <li> SearchLevel (XML), </li>
+		  <li> CriticalValueForLinearSum (XML), </li>
+                  <li> MaxNumberOfPeaks (XML). </li>
+              </ul>
+
+
+          <li><a href="#ForFigureOfMerit">Figures of merit による解のソート結果を改善する</a>: </li>
+              <ul>
+                  <li> ZeroPointShiftParameter (XML), </li>
+		  <li> MaxNumberOfPeaksForFOM (XML), </li>
+                  <LI> 0/1 flags on use of the respective peaks for powder auto-indexing and computation of figures of merit (IGOR テキスト).</LI>
+              </ul>
+
+          <li><a href="#ForSpeedUp">計算を速くする:</a></li>
+              <ul>
+                 <li>NumberOfThreadsToUse (XML),</li>
+		 <li>MinPrimitiveUnitCellVolume, MaxPrimitiveUnitCellVolume, MinDistanceBetweenLatticePoints (XML), </li>
+		 <li><td> OutputCubicF, 
+OutputCubicI, 
+OutputCubicP, OutputHexagonal, 
+OutputRhombohedral, OutputTetragonalI,
+OutputTetragonalP, OutputOrthorhombicF,
+OutputOrthorhombicI, OutputOrthorhombicC, 
+OutputOrthorhombicP, OutputMonoclinicB,
+OutputMonoclinicP (XML), </li>
+                 <li>SearchLevel & MaxNumberOfLatticeCandidates (XML). </li>
+              </ul>
+
+      </ol>
+    <li><a href="#HowToFindCorrectOne">正しい解はどれですか? (figure of meritを用いた判定方法)</a></li>
+    <li><a href="#UniqunessOfSolutions">粉末指数づけにおける解の一意性</a></li>
+</ul>
+</p>
+
+
+
+<h3><a name="ParameterTable">入力パラメータ表（XML ファイル）</a></h3>
+
+<p>
+粉末指数づけを始める際は、まずは以下のテーブルにある推奨値（箱が灰色のものを除く）をそのまま使用してみてください。
+パラメータ "AUTO" が入力されたとき、
+推奨値は入力粉末回折パターンを用いて計算され、コマンドライン上に表示されます。
+</p>
+<p>
+<table border="1" cellspacing="0" cellpadding="5" align="center" width="950">
+
+<caption><b>表 1: 入力パラメータ</b></caption>
+<tr>
+<td bgcolor="#ccfffff" width="250"> <b>XML タグ</b> </td>
+<td bgcolor="#ccfffff" width="600"> <b>説明</b> </td>
+<td bgcolor="#ccfffff"width="100"> <b>推奨値</b> </td>
+<tr>
+<td colspan="3"> <b>回折計のパラメータ</b> </td>
+</tr>
+</tr>
+<tr style="border-top: 4px double #ff9d9d;width: 100%;height:3;">
+<td>IsAngleDispersion</td>
+<td>0: 飛行時間法, 1: 角度分散法</td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>ZeroPointShiftParameter</td>
+<td>(角度分散法のみ) ゼロ点シフト &Delta;2&theta; (&deg;)</td>
+<td> 0 </td>
+</tr>
+<tr>
+<td>WaveLength</td>
+<td>(角度分散法のみ) 波長 (&Aring;). </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>ConversionParameters</td>
+<td>(飛行時間法のみ) コンバージョンパラメータ、すなわち、定数項から始まる任意次数の多項式の係数 </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+
+
+
+<tr>
+<td colspan="3"> <b>格子定数の列挙のためのパラメータ</b> </td>
+</tr>
+<tr>
+<td>SearchLevel</td>
+<td> 0: quick search (速さ優先探索。サイズが小さい、または、対称性の高いケースに向きます)、<BR>
+     1: regular search (メモリ使用量探索。難しい場合を含む全てのケースに対応します)。 </td>
+<td bgcolor="#cccccc">  </td>
+</tr>
+<tr>
+<td>MaxNumberOfPeaks</td>
+<td>使用するピークの最大数</td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>CriticalValueForLinearSum</td>
+<td> 伊藤の式を含むq (=1/d<Sup>2</Sup>)値の線形式が 0 に等しいかどうかを判定するための基準値 <BR>
+    (<i>i.e.</i> | &sum;<Sub>i</Sub> Q<Sub>i</Sub> | <= c Err [&sum;<Sub>i</Sub> Q<Sub>i</Sub>] )</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>MinPrimitiveUnitCellVolume, <BR> <a name="MaxPrimitiveUnitCellVolume">MaxPrimitiveUnitCellVolume</a></td>
+<td> Primitive cell の体積の下限と上限 (&Aring;<Sup>3</Sup>) </td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>MaxNumberOfTwoDimTopographs</td>
+<td> 選別されたトポグラフから取得する伊藤の式を満たす4つのq値 (q<Sub>1</Sub>,q<Sub>2</Sub>,q<Sub>3</Sub>,q<Sub>4</Sub>) の最大数 </td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td><a name="MaxNumberOfLatticeCandidates">MaxNumberOfLatticeCandidates</a></td>
+<td> 列挙する格子定数 (triclinic のみ) の最大数 </td>
+<td>AUTO</td>
+</tr>
+
+
+
+<tr>
+<td colspan="3"> <b>ブラベー格子決定のためのパラメータ</b> </td>
+</tr>
+<tr>
+<td>OutputCubicF, OutputCubicI, <BR>
+OutputCubicP, OutputHexagonal, <BR>
+OutputRhombohedral, OutputTetragonalI, <BR>
+OutputTetragonalP, OutputOrthorhombicF, <BR>
+OutputOrthorhombicI, OutputOrthorhombicC, <BR>
+OutputOrthorhombicP, OutputMonoclinicB, <BR>
+OutputMonoclinicP, OutputTriclinic
+</td>
+<td>各々のブラベー格子について格子定数を出力する? (0:No, 1:Yes)</td>
+<td>1</td>
+</tr>
+
+
+
+<tr>
+<td colspan="3"> <b>格子定数のソートのためのパラメータ</b> </td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td> d<Sup>*</Sup> = 1/d値の相対的解像度 <BR>
+    (二つの格子定数が与えるユニットセルがほぼ同一かどうかを判定するのに使用) </td>
+<td>0.03</td>
+</tr>
+<tr>
+<td><a name="MaxNumberOfPeaksForFOM">MaxNumberOfPeaksForFOM</a></td>
+<td>figures of Merit の計算に使用するピークの数 n。
+（回折パターンに含まれるピーク数が20より少なくても、20より小さい値に変更する必要はありません。）
+</td>
+<td>20</td>
+</tr>
+<tr>
+<td>MinFOM</td>
+<td> 
+de Wolff figure of merit M<Sub>n</Sub> がこの値より大きい格子定数のみ出力されます。 </td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>MinNumberOfMillerIndicesInRange, <BR> MaxNumberOfMillerIndicesInRange </td>
+<td>各々の格子定数から、1本目から n 本目の観測されたピークの範囲に存在する、ピーク数を計算によって求めることが出来ます。そのピーク数の下限と上限。
+<td>AUTO</td>
+</tr>
+<tr>
+<td>MinUnitCellEdgeABC</td>
+<td>格子定数 a, b, c (&Aring;)の下限 </td>
+<td>0</td>
+</tr>
+<tr>
+<td>MaxUnitCellEdgeABC</td>
+<td>格子定数 a, b, c (&Aring;)の上限 </td>
+<td>1000</td>
+</tr>
+
+
+
+<tr>
+<td colspan="3"> <b>設定パラメータ</b> </td>
+</tr>
+<tr>
+<td> NumberOfThreadsToUse </td>
+<td> 並列計算に使用するスレッド数 ("MAX" を入力すると、全スレッドが使用されます) </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>AxisForRhombohedralSymmetry</td>
+<td> "Rhombohedral" または "Hexagonal" を入力
+     (rhombohedral axis or hexagonal axis) </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>AxisForMonoclinicSymmetry</td>
+<td> "A" または "B" または "C" を入力
+     (A: a-axis, B : b-axis, C : c-axis). </td>
+<td> B </td>
+</tr>
+<tr>
+<td> ThresholdOnNormM </td>
+<td> M<Sub>n</Sub><Sup>Wu</Sup> がこの値以下の格子定数はブラベー格子決定前に除去されます。</td>
+<td> 1.9 </td>
+</tr>
+<tr>
+<td> ThresholdOnRevM </td>
+<td> M<Sub>n</Sub><Sup>Rev</Sup> がこの値以下の格子定数はブラベー格子決定前に除去されます。</td>
+<td> 1.0 </td>
+</tr>
+<tr>
+<td> MinDistanceBetweenLatticePoints </td>
+<td> 結晶格子の最も距離が近い二つの格子点の距離 (&Aring;)がこの値以下の格子定数は、格子定数の列挙を行うステージで除去されます。
+</td>
+<td> 2.0 </td>
+</tr>
+</table>
+</p>
+
+
+
+<h3><a name="DifferenceTwoSearches">Quick search と regular searchの主な違い</a></h3>
+<p>
+二つの探索の違いは、
+「計算速度とメモリ使用量のどちらを優先するか？」という技術的な問題から発生しており、
+基礎となっている探索アルゴリズムは同じですので、
+quick search において入力されたパラメータが適切であれば、二つの手法はほぼ同じ結果を返すと考えられます。
+（ただし、quick search の方が2倍以上、計算時間が短くて済むでしょう。）
+表2に二つの探索方法の違いをまとめます。
+</p>
+<p>
+<table border="1" cellspacing="0" cellpadding="5" align="center" width="950">
+<tr>
+<caption><b>表 2: 二つの探索方法の違い</b></caption>
+<td bgcolor="#ccfffff"> </td>
+<td bgcolor="#ccffff"> <b>Quick search</b> </td>
+<td bgcolor="#ccffff"> <b>Regular search</b> </td>
+</tr>
+<tr>
+<td width="24%"> 計算時間 <br> (Intel® Core™ i7 Processor (3.2 GHz), 8 スレッド使用) </td>
+<td width="38%"> < 5 分 </td>
+<td width="38%"> 約 10 分</td>
+</tr>
+<tr>
+<td> メモリ使用量 </td>
+<td> 難しいケースでは、多くのメモリが使用されることがあり、
+メモリ確保のエラーを予防するため、非常に多数の解が生成される場合、サイズの小さなユニットセルが優先的に列挙される格子定数の中から除去される </td>
+<td> figure of merit の良い解から優先的に保存されるため、さほど多くは必要でない </td>
+</tr>
+<tr>
+<td> 入力パラメータの変更の必要性 </td>
+<td> 小さな、または対称性の高いユニットセルではほとんど不要であるが、
+     それ以外のケースでは、以下のいずれかを変更する必要が生じる: 
+     <a href="#MaxPrimitiveUnitCellVolume">MaxPrimitiveUnitCellVolume</a> または 
+     <a href="#MaxNumberOfLatticeCandidates">MaxNumberOfLatticeCandidates</a>
+</td>
+<td> 多くのケースで不要 </td>
+</tr>
+</table>
+</p>
+
+
+
+<h3><a name="ModificationOfParameters">満足できる結果が得られないときに変更するパラメータ</a></h3>
+       <ol>
+          <li><a name="ForPrudentSearch">より丁寧な探索を行う</a>:</li>
+              <ul>
+                  <li> <b><a name="SearchLevel">SearchLevel</a>: 0 &rarr; 1</b> <BR>
+                       入力パラメータを推奨値にセットして Regular search を実行すれば、幅広いケースで十分に丁寧な探索を行うことができます。
+                  </li>
+		  <li> <b><a name="CriticalValueForLinearSum">CriticalValueForLinearSum</a>: 1 &rarr; 1.5</b> <BR>
+                        特性X線または原子炉のデータにおいては、大き目の値を用いることで結果がよくなることがあるようです。
+                  </li>
+                  <li> <b><a name="MaxNumberOfPeaks">MaxNumberOfPeaks</a>: AUTO &rarr; 48よりも大きな数 (50--80)</b> <BR>
+                        AUTOを指定した場合、48より大きな値が入ることはありません。
+			ピーク数を増やすと計算時間も増えますが、より多くの情報が粉末指数づけのために使われることになります。
+　　　　　　　　　</li>
+              </ul>
+
+
+          <li><a name="ForFigureOfMerit">Figures of merit による解のソート結果を改善する</a>: </li>
+              <ul>
+                  <li> <b><a name="ZeroPointShiftParameter">ZeroPointShiftParameter</a>: 0 &rarr; より正確なゼロ点シフト推定値</b><BR>
+                        ゼロ点シフトが大きな回折データでは (<i>e.g.</i>, &Delta;2&theta; > 0.1 &deg;) figures of merit の値がかなり小さくなることがあります。
+                        粉末指数づけ後の格子定数とゼロ点シフトの精密化の結果が不十分な場合、
+                        ゼロ点シフトの推定値を用いて粉末指数づけを行うことで、結果が改善されることがあります。
+                        ゼロ点シフトの推定は以下の方法で行うことができます（ただしいずれの方法も間違えることがあるため、複数の候補を検討する必要があります）:
+                        <ol type="a">
+                          <li> (粉末指数づけ前) Reflection pair method を用いる [<a href="#ref2">2</a>]、
+                          <li> (粉末指数づけ後) 正しそうな解または M<Sub>n</Sub><Sup>Rev</Sup> および M<Sub>n</Sub><Sup>Sym</Sup> が比較的大きな格子定数(例としてM<Sub>n</Sub><Sup>Rev</Sup> >3, M<Sub>n</Sub><Sup>Sym</Sup> >10程度) を用いて、ゼロ点シフトの精密化を行う。</li>
+                        </ol>
+
+		  <li> <b><a name="MaxNumberOfPeaksForFOM2">MaxNumberOfPeaksForFOM</a>: 20 &rarr; 20よりも大きな数</b> <BR>
+このパラメータには20がよく使われ、多くの標準的なケースで十分な結果を返します。
+しかし、求めるユニットセルにdomnant zone と呼ばれるものが生じていると、20では不十分な場合があります。
+格子定数とゼロ点シフトを精密化する際に、dominant zone が生じていれば、
+コマンドラインで、警告メッセージと最低限必要なピーク数が表示されます。
+ある格子定数を解だと判定する際は、コマンドライン上にこの警告メッセージが表示されていないことを確認してください。
+もし表示されていた場合は、表示されているピーク数より大きな値をこのパラメータに対して入力する必要があります。
+		  </li>
+                  <LI> <b>ピークサーチからやり直す、または<BR>
+各ピークについて、指数づけおよび figure of merit の計算に使用しない/する、を指定するための 0/1 フラグ: 1 &rarr; 0 </b><BR>
+
+不純物等が原因で生じる偽のピークは、
+格子定数のソート結果に大きく影響することがあります。
+（他方、格子定数の列挙は、不純物ピークの影響を受けにくいことが示されます。）
+特に、パラメータ "MaxNumberOfPeaksForFOM" (figure of meritの計算に使用されるピーク数)が n のとき、
+1本目から n 本目までのピークの間に不純物ピークが少なからず存在すると、
+正しい解かどうかの判定は非常に困難になるため、
+この範囲にあるピークについては、慎重にピークサーチを行う必要があります。
+時には、ピークサーチからやり直すことや、
+0/1フラグを用いて怪しいピークを除外することも有効です。
+(ただし、ピークを除外しすぎると、格子定数の候補の列挙に影響が出てきます。）
+
+                </LI>
+             </ul>
+
+          <li><a name="ForSpeedUp">計算を速くする:</a></li>
+              <ul>
+                  <li> <b>NumberOfThreadsToUse</b> <BR>
+                      一番単純な方法が、使用するスレッドの数を増やすことです。
+                  </li>
+		  <li> <b><a name="MinPrimitiveUnitCellVolumeMaxPrimitiveUnitCellVolume">MinPrimitiveUnitCellVolume, MaxPrimitiveUnitCellVolume, MinDistanceBetweenLatticePoints</a></a></b> <BR>
+                       上記のパラメータに関する情報を事前にお持ちであれば、格子定数の列挙にかかる時間を減らすことができます。
+                      　(ブラベー格子ではなく、結晶の primitive cell (lattice) について、その体積、および最も距離が近い二つの格子点の距離を考える必要があります。)
+                  </li>
+
+                  <li> <b><a name="SearchLevelMaxNumberOfLatticeCandidates">SearchLevel: 1 &rarr; 0 とし、さらに <BR> MaxNumberOfLatticeCandidates</a>: AUTO &rarr; 64000 よりも大きな数 (100000 - 300000 程度) </a></b><BR>
+                メモリ量の少ないコンピュータを考慮して、推奨値のAUTOによってセットされる &lt;MaxNumberOfLatticeCandidates&gt; の値は 64000 以下の数になります。
+		もし、この数よりも多数の格子定数が生成された場合、
+                体積の小さな格子定数から優先的に除去されるため、
+quick search では、パラメータ
+&lt;MaxPrimitiveUnitCellVolume&gt; または 
+&lt;MaxNumberOfLatticeCandidates&gt;
+の変更が必要になります。
+                しかし、例えば 4 GB のメモリを持つパソコンでは、MaxNumberOfLatticeCandidates = 300000 程度であれば、メモリ確保のエラーは起こらないようです。
+                このように、&lt;MaxNumberOfLatticeCandidates&gt; をご使用のパソコンに合わせて増やしておくことで、
+                quick search を用いて regular search と同等の結果を、
+より多くのケースでより高速に得ることが出来ます。
+		  </li>
+
+		 <li><td> <b>OutputCubicF, 
+OutputCubicI, 
+OutputCubicP, OutputHexagonal, 
+OutputRhombohedral, OutputTetragonalI,
+OutputTetragonalP, OutputOrthorhombicF,
+OutputOrthorhombicI, OutputOrthorhombicC, 
+OutputOrthorhombicP, OutputMonoclinicB,
+OutputMonoclinicP: 1 &rarr; 0 </B> <BR>
+                       もしブラベー格子について事前に情報をお持ちであれば、使用することで、ブラベー格子決定後のステージにかかる時間を減らすことができます。
+                  </li>
+
+              </ul>
+          </ul>
+      </ol>
+
+
+
+<h3><a name="HowToFindCorrectOne">正しい解はどれですか? (figure of meritを用いた判定方法)</a></h3>
+<p>
+どの格子定数が正しいかを判定するための最も確実な方法は、画面上で観測ピーク位置と計算ピーク位置の比較を行うことですが、figure of merit を用いると、あらかじめ可能性が高い格子定数に候補を自動で絞っておくことが出来るため、正しい格子定数を見つけるまでに必要な時間を短縮することができます。
+</p>
+<p>
+以下の5つが現在使用可能な figure of merit です:
+<ul>
+    <li> M<Sub>n</Sub> : de Wolff figure of merit [<a href="#ref1">1</a>]、 </li>
+    <li> M<Sub>n</Sub><Sup>Wu</Sup> : Wu によって提案された改善版 figure of merit [<a href="#ref4">4</a>]、 </li>
+    <li> M<Sub>n</Sub><Sup>Rev</Sup> : reversed figure of merit、 </li>
+    <li> M<Sub>n</Sub><Sup>Sym</Sup> : symmetric figure of merit、 </li>
+    <li> NN<Sub>&epsilon;</Sub> : 探索によって得られた解の中で、ほぼ同一なユニットセルの数。 </li>
+</ul>
+ただし、n と &epsilon; は入力パラメータ &lt;MaxNumberOfPeaksForFOM&gt;、&lt;Resolution&gt; の値が入ります。
+最初の4つの figure of merit は、観測ピーク位置と計算ピーク位置が相関を持たないとき1に近い値を取るように定義されています。
+もし、M<Sub>n</Sub> > 10, M<Sub>n</Sub><Sup>Wu</Sup> > 10, M<Sub>n</Sub><Sup>Rev</Sup> > 3 or 
+M<Sub>n</Sub><Sup>Sym</Sup> > 30 のいずれかを満たす格子定数が見つかれば、正しい解を与えている可能性が高いでしょう。
+</p>
+
+<p>
+上記の figures of merit のうち、de Wolff figure of merit M<Sub>n</Sub> が、常にではありませんが正しい解を検出する能力が最も高いです。
+この理由として、de Wolff 評価指数の持つ以下の性質のうち、特に c が影響していると考えられます。
+<ol type="a">
+    <li> 観測されていない計算ピーク位置（消滅則などによる）の影響を受けにくい </li>
+    <li> 観測ピーク位置のうち指数がついてないもの（不純物ピークなどによる）の影響をうけやすい </li>
+    <li> ほぼ同一の格子定数が、異なるブラベー格子に含まれている場合、対称性の高いブラベー格子のものがより高い値を得る </li>
+</ol>
+
+M<Sub>n</Sub><Sup>Wu</Sup> も性質 a, b を持ちますが、c に関しては全く逆の傾向で、対称性の低いブラベー格子がより高い値を得ます。
+M<Sub>n</Sub><Sup>Rev</Sup> の性質は、Mnの上記の性質とは全て逆になり、特に不純物ピークの影響を受けにくいです。
+M<Sub>n</Sub><Sup>Sym</Sup> は、M<Sub>n</Sub>とM<Sub>n</Sub><Sup>Rev</Sup>の中間の性質を持つように定義されています。
+<p>
+このことから、M<Sub>n</Sub>が十分に大きく（例えば、M<Sub>n</Sub> > 10程度）、
+また他の複数の評価指数からも（少なくとも同じブラベー格子に属す解の中で）最上位に位置付けられている格子定数が存在すれば、
+その格子定数は解である可能性はかなり高いと言えます。
+同じブラベー格子に属す解の中で、異なる評価指数がそれぞれ別の格子定数を選んでいる場合、
+多種多様な格子定数が生成されていると考えられるので、それぞれの評価指数がどのような格子定数を選んでいるのか、
+一つ一つチェックした方がよいです。そのような解に対して画面上でピーク位置を確認することで最終判断ができる場合も多いでしょう。
+</p>
+<p>
+ただし、仮に列挙された格子定数の中に正しい格子定数が存在し、
+画面上でピーク位置の比較を行ったとしても、どれがその正しい解か区別できないことは起こり得ます。
+よくある理由は粉末回折パターンの質が悪いということですが、
+この問題については、<a href="#UniqunessOfSolutions">粉末指数づけにおける解の一意性</a>もあわせて読まれることをお勧めします。
+</p>
+
+
+<h3><a name="UniqunessOfSolutions">粉末指数づけにおける解の一意性</a></h3>
+<p>
+ピーク位置の情報からは、必ずしも格子定数が唯一つに決まるとは限りません。
+複数の解が存在することは、低対称の格子定数では稀ですが、
+立方晶、六方晶、三方晶の格子定数には、より対称性の低いブラベー格子に属する格子定数で、
+同一のピーク位置を持つものが存在することが知られています [<a href="#ref3">3</a>]。
+これは数学によって示される現象のため、観測上の精度に関わりません。
+以下の図は、cubic(F) の場合の具体例を示しています:
+<div align="center">
+   <p class="image"><img src="../figures/ThreeSolutions.png" width="525" height="277" alt="Figure 1"></p>
+   <p class="caption ">図 1 : 異なる格子定数が完全に一致するピーク位置を持つ例</p>
+</div>
+
+Conograph は徹底探索を行っているので、複数の解が存在する場合にも、
+観測上の問題が大きい場合を除いて、全ての解が列挙された格子定数のリストに含まれていると考えられます。
+その場合、最も対称性の高い解が、最良の de Wolff figure of merit の値を得ることが多いです。
+（一般に対称性の高い解の方が、正しい確率が高いとされていますが、もちろん、常に正しいわけではありません。）
+消滅則、または格子定数のサイズを考慮することで、格子定数の候補の数を減らせることがあります。
+
+</p>
+
+
+
+<h2><a name="References">References</a></h2>
+<p>
+<OL>
+
+<a name="ref1"><LI></a>
+P. M. de Wolff, <BR>
+"A simplified criterion for the reliability of a powder pattern indexing", J. Appl. Cryst., 1, pp. 108-113 (1968).</LI>
+
+<a name="ref2"><LI></a>
+C. Dong, F. Wu, H. Chen, <BR>
+"Correction of zero shift in powder diffraction patterns using the reflection-pair method", J. Appl. Cryst., 32, pp. 850-853 (1999).</LI>
+
+<a name="ref3"><LI></a>
+A. D. Mighell & A. Santoro, <BR>
+"Geometrical Ambiguities in the Indexing of Powder Patterns", J. Appl. Cryst., 8, pp. 372-374 (1975).</LI>
+
+<a name="ref4"><LI></a>
+E. Wu, <BR>
+"A modification of the de Wolff figure of merit for reliability of powder pattern indexing", J. Appl. Cryst., 21, pp. 530-535 (1988).</LI>
+</OL>
+</p>
+
+
+<A HREF="#">［Back to top]</A>
+<A HREF="../InstructionsConograph_JP.html">［Back to main page of Conograph］</A>
+
+</body>

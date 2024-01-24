@@ -1,0 +1,65 @@
+<ZCodeParameters>
+ <ConographOutput>
+  <LatticeCandidate>
+   <CrystalSystem>     Rhombohedral </CrystalSystem>
+
+   <!-- a, b, c(angstrom), alpha, beta, gamma(deg.)-->
+   <ReducedLatticeParameters axis="Rhombohedral">   5.1303e+000   5.1303e+000   5.1303e+000   5.5292e+001   5.5292e+001   5.5292e+001 </ReducedLatticeParameters>
+   <ReducedLatticeParameters axis="Hexagonal">   4.7610e+000   4.7610e+000   1.2995e+001   9.0000e+001   9.0000e+001   1.2000e+002 </ReducedLatticeParameters>
+
+   <OptimizedLatticeParameters>   4.7610e+000   4.7610e+000   1.2995e+001   9.0000e+001   9.0000e+001   1.2000e+002 </OptimizedLatticeParameters>
+
+   <VolumeOfUnitCell axis="Hexagonal">   2.5510e+002 </VolumeOfUnitCell>
+   <FigureOfMeritWolff name="M20">   2.6664e+002 </FigureOfMeritWolff>
+   <FigureOfMeritWu name="Mwu20">   2.1690e+002 </FigureOfMeritWu>
+   <ReversedFigureOfMeritWolff name="Mrev20">   4.0365e+000 </ReversedFigureOfMeritWolff>
+   <SymmetricFigureOfMeritWolff name="Msym20">   1.0763e+003 </SymmetricFigureOfMeritWolff>
+   <!-- Number of reflections up to the 20th reflection. (The multiplicity of peaks is considered.)-->
+   <NumberOfMillerIndicesInRange>   2.9333e+001 </NumberOfMillerIndicesInRange>
+   <NumberOfIndexedPeaks>            20 </NumberOfIndexedPeaks>
+   <NumberOfPeaksNecessaryToResolveDominantZone>             3 </NumberOfPeaksNecessaryToResolveDominantZone>
+
+   <EquivalentLatticeCandidates>
+<!-- Almost equivalent unitcell parameters of different centring types. -->
+    <LatticeCandidate>
+     <Centring>          Base(C) </Centring>
+     <LatticeParameters>   8.2463e+000   4.7610e+000   5.1303e+000   9.0000e+001   1.2240e+002   9.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+    <LatticeCandidate>
+     <Centring>        Primitive </Centring>
+     <LatticeParameters>   4.7610e+000   4.7610e+000   5.1303e+000   9.0000e+001   6.2354e+001   6.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+   </EquivalentLatticeCandidates>
+
+   <IndexingResults>
+    <!-- q_obs, q_err, q_cal, peak_pos, peak_width, pos_cal, hkl, fix_or_fit.-->
+    8.2540e-002    4.9493e-004    8.2508e-002    2.5718e+001    1.8359e-001    2.5713e+001        [0,1,2]    1
+    1.5360e-001    6.2076e-004    1.5356e-001    3.5290e+001    1.7267e-001    3.5285e+001      [1,-1,-4]    1
+    1.7651e-001    6.8160e-004    1.7647e-001    3.7911e+001    1.7820e-001    3.7907e+001        [1,1,0]    1
+    2.1319e-001    6.2668e-004    2.1317e-001    4.1815e+001    1.5092e-001    4.1813e+001        [0,0,6]    1
+    2.2976e-001    6.7285e-004    2.2976e-001    4.3483e+001    1.5698e-001    4.3483e+001      [2,-1,-3]    1
+    2.5895e-001    5.9391e-004    2.5898e-001    4.6302e+001    1.3185e-001    4.6305e+001       [0,2,-2]    1
+    3.3001e-001    7.1321e-004    3.3003e-001    5.2675e+001    1.4388e-001    5.2676e+001       [2,0,-4]    1
+    3.8961e-001    7.3788e-004    3.8964e-001    5.7623e+001    1.4011e-001    5.7625e+001       [1,1,-6]    1
+    4.1761e-001    7.5315e-004    4.1768e-001    5.9853e+001    1.3965e-001    5.9859e+001        [2,1,1]    1
+    4.3773e-001    6.9220e-004    4.3779e-001    6.1426e+001    1.2637e-001    6.1430e+001       [1,0,-8]    1
+    5.0648e-001    8.2410e-004    5.0650e-001    6.6633e+001    1.4389e-001    6.6635e+001      [2,-3,-4]    1
+    5.2944e-001    8.0905e-004    5.2941e-001    6.8325e+001    1.3953e-001    6.8323e+001        [0,3,0]    1
+    5.5976e-001    8.8053e-004    5.5979e-001    7.0529e+001    1.4967e-001    7.0532e+001      [3,-1,-5]    1
+    6.1426e-001    9.1081e-004    6.1426e-001    7.4419e+001    1.5150e-001    7.4419e+001      [2,-2,-8]    1
+    6.5090e-001    8.8278e-004    6.5096e-001    7.6992e+001    1.4515e-001    7.6996e+001     [1,-1,-10]    1
+    6.5623e-001    7.2981e-004    6.5610e-001    7.7364e+001    1.1982e-001    7.7355e+001      [1,-2,-9]    1
+    7.0178e-001    9.7337e-004    7.0191e-001    8.0521e+001    1.5807e-001    8.0530e+001       [1,2,-7]    1
+    7.0592e-001    8.6237e-004    7.0587e-001    8.0807e+001    1.3993e-001    8.0803e+001       [2,-4,0]    1
+    7.4263e-001    1.0981e-003    7.4258e-001    8.3327e+001    1.7707e-001    8.3324e+001       [3,0,-6]    1
+    7.5919e-001    9.2546e-004    7.5917e-001    8.4460e+001    1.4890e-001    8.4459e+001       [2,2,-3]    1
+   </IndexingResults>
+
+   <OptimizedZeroShitParameters>
+    <Parameter>   -1.4758e-001  </Parameter>  <Error>    4.7666e-002  </Error>
+   </OptimizedZeroShitParameters>
+  </LatticeCandidate>
+
+
+ </ConographOutput>
+</ZCodeParameters>

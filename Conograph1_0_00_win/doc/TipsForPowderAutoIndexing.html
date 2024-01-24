@@ -1,0 +1,466 @@
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+   body { line-height: 1.5; }
+</style>
+<head>
+<title> Tips for powder auto-indexing </title>
+</head>
+<body lang="en">
+<DIV style="text-align:left;">
+ <DIV style="text-align:right;float:right;">
+  <A HREF="../InstructionsConograph.html">［Back to main page of Conograph］</A>
+ </DIV>
+ <font size="+1"><b> Tips for powder auto-indexing using Conograph </b></font>
+</DIV>
+<font size="-1" color="#339999"> [English / <a href="TipsForPowderAutoIndexing_JP.html">Japanese</a>] </font><br>
+
+<p>
+<ul>
+    <li><a href="#ParameterTable">A table of parameters in the *.inp.xml file</a></li>
+    <li><a href="#DifferenceTwoSearches">What are the differences between the quick and regular search options?</a></li>
+    <li><a href="#ModificationOfParameters">Which parameters should be modified when results are not satisfactory?</a> </li>
+       <ol>
+          <li><a href="#ForPrudentSearch">For a more careful search</a>:</li>
+              <ul>
+                  <li> SearchLevel (XML), </li>
+		  <li> CriticalValueForLinearSum (XML), </li>
+                  <li> MaxNumberOfPeaks (XML). </li>
+              </ul>
+
+
+          <li><a href="#ForFigureOfMerit">For improvement of the efficacy of the figures of merit</a>: </li>
+              <ul>
+                  <li> ZeroPointShiftParameter (XML), </li>
+		  <li> MaxNumberOfPeaksForFOM (XML), </li>
+                  <LI> 0/1 flags on use of the respective peaks for powder auto-indexing and computation of figures of merit (IGOR text).</LI>
+              </ul>
+
+          <li><a href="#ForSpeedUp">For speeding up the process</a>:</li>
+              <ul>
+                 <li>NumberOfThreadsToUse (XML),</li>
+		 <li>MinPrimitiveUnitCellVolume, MaxPrimitiveUnitCellVolume, MinDistanceBetweenLatticePoints (XML), </li>
+		 <li><td> OutputCubicF, 
+OutputCubicI, 
+OutputCubicP, OutputHexagonal, 
+OutputRhombohedral, OutputTetragonalI,
+OutputTetragonalP, OutputOrthorhombicF,
+OutputOrthorhombicI, OutputOrthorhombicC, 
+OutputOrthorhombicP, OutputMonoclinicB,
+OutputMonoclinicP (XML), </li>
+                 <li>SearchLevel & MaxNumberOfLatticeCandidates (XML). </li>
+              </ul>
+
+      </ol>
+    <li><a href="#HowToFindCorrectOne">The powder auto-indexing outputs many unit-cells. How can I find the correct one? (Properties of figures of merit)</a></li>
+    <li><a href="#UniqunessOfSolutions">Uniqueness of solutions in powder auto-indexing</a></li>
+</ul>
+</p>
+
+
+
+<h3><a name="ParameterTable"A table of parameters in the *.inp.xml file</a></h3>
+
+<p>
+Conograph users are counseled to start powder auto-indexing with the recommended values from the following table for all of the parameters,
+except for the ones with an empty, gray box.
+When AUTO is entered,
+the recommended value for the parameter is computed using the powder diffraction pattern
+and is presented on the command line.
+</p>
+<p>
+<table border="1" cellspacing="0" cellpadding="5" align="center" width="950">
+
+<caption><b>Table 1: Parameter table</b></caption>
+<tr>
+<td bgcolor="#ccfffff" width="250"> <b>XML tag</b> </td>
+<td bgcolor="#ccfffff" width="600"> <b>Explanation</b> </td>
+<td bgcolor="#ccfffff"width="100"> <b>Recommended value</b> </td>
+<tr>
+<td colspan="3"> <b>Parameters for diffractometer</b> </td>
+</tr>
+</tr>
+<tr style="border-top: 4px double #ff9d9d;width: 100%;height:3;">
+<td>IsAngleDispersion</td>
+<td>0: time-of-flight, 1: angle dispersion</td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>ZeroPointShiftParameter</td>
+<td>(For angle dispersion) Zero-point shift parameter &Delta;2&theta; (&deg;)</td>
+<td> 0 </td>
+</tr>
+<tr>
+<td>WaveLength</td>
+<td>(For angle dispersion) Wave length (&Aring;). </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>ConversionParameters</td>
+<td>(For time-of-flight) Conversion parameters, <i>i.e.<i>, coefficients of a polynomial of any degree starting from the constant term </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+
+<tr>
+<td colspan="3"> <b>Parameters for enumeration stage</b> </td>
+</tr>
+<tr>
+<td>SearchLevel</td>
+<td> 0: quick search (for unit cells with small volume or high symmetry),<BR>
+     1: regular search (for all cases including difficult ones). </td>
+<td bgcolor="#cccccc">  </td>
+</tr>
+<tr>
+<td>MaxNumberOfPeaks</td>
+<td>Number of peaks used for calculation</td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>CriticalValueForLinearSum</td>
+<td> The criterion c to judge if linear sums of q-values (including Ito's equation) equals zero <BR>
+    (<i>i.e.</i> | &sum;<Sub>i</Sub> Q<Sub>i</Sub> | <= c Err [&sum;<Sub>i</Sub> Q<Sub>i</Sub>] )</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>MinPrimitiveUnitCellVolume, <BR> <a name="MaxPrimitiveUnitCellVolume">MaxPrimitiveUnitCellVolume</a></td>
+<td> Lower and upper threshold for the volume of primitive unit-cell (&Aring;<Sup>3</Sup>) </td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>MaxNumberOfTwoDimTopographs</td>
+<td> Upper threshold for the number of quadruples (q<Sub>1</Sub>,q<Sub>2</Sub>,q<Sub>3</Sub>,q<Sub>4</Sub>) taken from selected topographs </td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td><a name="MaxNumberOfLatticeCandidates">MaxNumberOfLatticeCandidates</a></td>
+<td> Upper threshold for the number of (triclinic) solutions </td>
+<td>AUTO</td>
+</tr>
+
+<tr>
+<td colspan="3"> <b>Parameters for Bravais lattice determination</b> </td>
+</tr>
+<tr>
+<td>OutputCubicF, OutputCubicI, <BR>
+OutputCubicP, OutputHexagonal, <BR>
+OutputRhombohedral, OutputTetragonalI, <BR>
+OutputTetragonalP, OutputOrthorhombicF, <BR>
+OutputOrthorhombicI, OutputOrthorhombicC, <BR>
+OutputOrthorhombicP, OutputMonoclinicB, <BR>
+OutputMonoclinicP, OutputTriclinic
+</td>
+<td>Output unit cells belonging to the Bravais type? (0:No, 1:Yes)</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td colspan="3"> <b>Parameters for sorting stage</b> </td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>Relative resolution of d<Sup>*</Sup> = 1/d-values <BR>
+    (used for detection of almost identical unit cells) </td>
+<td>0.03</td>
+</tr>
+<tr>
+<td><a name="MaxNumberOfPeaksForFOM">MaxNumberOfPeaksForFOM</a></td>
+<td>Number n of peaks used to calculate figures of Merit.
+(Even if the number of observed peaks in your diffraction pattern is smaller than 20,
+it is not necessary to decrease this number.)
+</td>
+<td>20</td>
+</tr>
+<tr>
+<td>MinFOM</td>
+<td>Any indexing solution is output if the value of the de Wolff figure of merit M<Sub>n</Sub> is greater than this value. </td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>MinNumberOfMillerIndicesInRange, <BR> MaxNumberOfMillerIndicesInRange </td>
+<td>Lower and upper threshold for the number of distinct computed lines within the range of the first-to-n'th observed lines. </td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>MinUnitCellEdgeABC</td>
+<td>Lower thresholds for the unit cell parameters a, b, c (&Aring;) </td>
+<td>0</td>
+</tr>
+<tr>
+<td>MaxUnitCellEdgeABC</td>
+<td>Upper thresholds for the unit cell parameters a, b, c (&Aring;) </td>
+<td>1000</td>
+</tr>
+
+<tr>
+<td colspan="3"> <b>Configuration parameters</b> </td>
+</tr>
+<tr>
+<td> NumberOfThreadsToUse </td>
+<td> Number of threads used (Enter MAX to use all threads.) </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>AxisForRhombohedralSymmetry</td>
+<td> Enter Rhombohedral or Hexagonal
+     (rhombohedral axis or hexagonal axis). </td>
+<td bgcolor="#cccccc"> </td>
+</tr>
+<tr>
+<td>AxisForMonoclinicSymmetry</td>
+<td> Enter A or B or C
+     (A: a-axis, B : b-axis, C : c-axis). </td>
+<td> B </td>
+</tr>
+<tr>
+<td> ThresholdOnNormM </td>
+<td> Unit cells with M<Sub>n</Sub><Sup>Wu</Sup> less than this value are removed before Bravais lattice determination </td>
+<td> 1.9 </td>
+</tr>
+<tr>
+<td> ThresholdOnRevM </td>
+<td> Unit cells with M<Sub>n</Sub><Sup>Rev</Sup> less than this value are removed before Bravais lattice determination </td>
+<td> 1.0 </td>
+</tr>
+<tr>
+<td> MinDistanceBetweenLatticePoints </td>
+<td> If the distance (&Aring;) between two closest points of the crystal lattice is less than this value,
+     the unit cell is removed during the enumeration process.
+</td>
+<td> 2.0 </td>
+</tr>
+</table>
+</p>
+
+
+
+<h3><a name="DifferenceTwoSearches">What are the differences between the quick and regular search options?</a></h3>
+<p>
+The two search options were designed to resolve a technical dilemma; namely, whether to give priority to computational speed or to memory usage?. 
+Because these searches are based on the same algorithm,
+almost identical results will be generated if the input parameters are chosen properly for quick search.
+(In that case, quick search will be more than twice as fast as regular search.)
+The following table summarizes the differences between the two searche options:
+</p>
+<p>
+<table border="1" cellspacing="0" cellpadding="5" align="center" width="950">
+<tr>
+<caption><b>Table 2: Diferences between the two search options</b></caption>
+<td bgcolor="#ccfffff"> </td>
+<td bgcolor="#ccffff"> <b>Quick search</b> </td>
+<td bgcolor="#ccffff"> <b>Regular search</b> </td>
+</tr>
+<tr>
+<td width="24%"> Computational time <br> (Intel® Core™ i7 Processor (3.2 GHz), 8スレッド使用時) </td>
+<td width="38%"> < 5 minutes </td>
+<td width="38%"> about 10 minutes</td>
+</tr>
+<tr>
+<td> Memory usage </td>
+<td> A large amount of memory is sometimes required for difficult cases.
+     In order to avoid memory allocation errors, unit cells with a smaller volume are removed first from the list of enumerated solutions,
+     if very many solutions are generated. </td>
+<td> Not so much, because unit cells with a better figure of merit are reserved first </td>
+</tr>
+<tr>
+<td> Modification of input parameters </td>
+<td> Unnecessary in many cases if the unit cell has a small volume or high symmetry.
+     Otherwise it is frequently necessary to modify one of the following parameters: <a href="#MaxPrimitiveUnitCellVolume">MaxPrimitiveUnitCellVolume</a> or <a href="#MaxNumberOfLatticeCandidates">MaxNumberOfLatticeCandidates</a>
+</td>
+<td> Unnecessary in many cases </td>
+</tr>
+</table>
+</p>
+
+
+
+<h3><a name="ModificationOfParameters">Which parameters should be modified when results are not satisfactory?</a></h3>
+       <ol>
+          <li><a name="ForPrudentSearch">For a more careful search</a>:</li>
+              <ul>
+                  <li> <b><a name="SearchLevel">SearchLevel</a>: 0 &rarr; 1.</b> <BR>
+                       Regular search with the recommended values of input parameters will be sufficient for many cases.
+                  </li>
+		  <li> <b><a name="CriticalValueForLinearSum">CriticalValueForLinearSum</a>: 1 &rarr; 1.5.</b> <BR>
+                             For some powder diffraction patterns from characteristic X-rays and reactor sources,
+                             1.5 seems to work more efficiently.
+                  </li>
+                  <li> <b><a name="MaxNumberOfPeaks">MaxNumberOfPeaks</a>: AUTO &rarr; a number greater than 48 (50--80).</b> </li>
+                       When AUTO is used, the number entered in this parameter is not greater than 48.
+                       Although computational time is magnified by increasing this parameter,
+                       more information on peaks is used for powder auto-indexing.
+		       As a result, a wider variety of unit cell parameters are formed and checked.
+              </ul>
+
+
+          <li><a name="ForFigureOfMerit">For improvement of the efficacy of the figures of merit</a>: </li>
+              <ul>
+                  <li> <b><a name="ZeroPointShiftParameter">ZeroPointShiftParameter</a>: 0 &rarr; estimated value of zero point shift.</b> <BR>
+                        Large zero-point shift (<i>e.g.</i>, &Delta;2&theta;) lowers the values of figures of merit largely.
+                        If the result of the refinement after powder auto-indexing is insufficient, 
+                        powder auto-indexing with an estimated value of zero-point shift may be effective.
+                        The estimated value is obtained by one of the following method:
+                        <ol type="a">
+                          <li> the reflection pair method (before powder auto-indexing) [<a href="#ref2">2</a>],
+                          <li> refinement of the zero-point shit using unit cell parameters with large M<Sub>n</Sub><Sup>Rev</Sup> (<i>e.g.</i>, >3) and M<Sub>n</Sub><Sup>Sym</Sup> (<i>e.g.</i>, >10) (after powder auto-indexing). </li>
+                        </ol>
+                  </li>
+		  <li> <b><a name="MaxNumberOfPeaksForFOM2">MaxNumberOfPeaksForFOM</a>: 20 &rarr; a number greater than 20.</b> <BR>
+For this parameter, n = 20 is frequently used, and works well in many cases.
+However, greater n is required when a domnant zone exists.
+If a unit cell requiring large n is entered on the command line for refinement,
+the n and a warning message are displayed on the screen. 
+Information on this n is also included in the XML output files.
+		  </li>
+                  <LI> <b>0/1 flags on use of the respective peaks for powder auto-indexing and computation of figures of merit: 1 &rarr; 0 </b><BR>
+The sorting of unit cells is sensitive to false peaks caused by impurities.
+(The enumeration stage, on the other hand, is proved to be insensitive to them.)
+Therefore, if the MaxNumberOfPeaksForFOM parameter (the number of peaks used for computation of figures of merit) is set to n,
+the number of false peaks included in the range of the first n peaks should be as small as possible.
+In order to improve powder auto-indexing results, it is sometimes effective to restart powder auto-indexing from peak search or use 0/1 flags to exclude suspicious peaks.
+(However, this exclusion may reduce the success rate of enumeration stage to some degree.)
+                 </LI>
+             </ul>
+
+          <li><a name="ForSpeedUp">For speeding up the process</a>:</li>
+              <ul>
+                  <li> <b>NumberOfThreadsToUse</b> <BR>
+                      A very straightforward method is to increase this parameter. 
+                  </li>
+		  <li> <b><a name="MinPrimitiveUnitCellVolumeMaxPrimitiveUnitCellVolume">MinPrimitiveUnitCellVolume, MaxPrimitiveUnitCellVolume, MinDistanceBetweenLatticePoints</a></a></b> <BR>
+                       If you have prior information about these parameters, they will be useful for speeding up of the enumeration stage. (Note that these parameters are concerned with the primitive cell (or primitive lattice) of the crystal, and not with the Bravais lattice.)
+                  </li>
+		  
+                  <li> <b><a name="SearchLevelMaxNumberOfLatticeCandidates">SearchLevel: 1 &rarr; 0, and <BR> MaxNumberOfLatticeCandidates</a>: AUTO &rarr; a number greater than 64000 (100000 - 300000) </a></b><BR>
+                Considering computers with a small amount of memory, the MaxNumberOfLatticeCandidates parameter is set to a number not more than 64000,
+                if AUTO is entered.  
+		If the number of unit cells generated is greater than the value in the MaxNumberOfLatticeCandidates parameter, unit cells with a smaller volume are removed first.
+                This is the reason that a modification to either of the paramters MaxPrimitiveUnitCellVolume or MaxNumberOfLatticeCandidates is frequently required for the quick search option.
+                However, for example, MaxNumberOfLatticeCandidates = 300000 did not cause memory allocation errors on a computer with 4 GB memory and the quick search was still at least twice as fast as the regular search.
+		Therefore, 
+                by setting the SearchLevel parameter to quick search and increasing the value in the MaxNumberOfLatticeCandidates parameter to a value that is acceptable for your computer,
+                the same result as regular search will be obtained in a shorter time.
+		  </li>
+
+		 <li><td> <b>OutputCubicF, 
+OutputCubicI, 
+OutputCubicP, OutputHexagonal, 
+OutputRhombohedral, OutputTetragonalI,
+OutputTetragonalP, OutputOrthorhombicF,
+OutputOrthorhombicI, OutputOrthorhombicC, 
+OutputOrthorhombicP, OutputMonoclinicB,
+OutputMonoclinicP: 1 &rarr; 0 </B> <BR>
+                       If you have prior information about the Bravais lattice of the crystal, it will also be useful for speeding up of the Bravais lattice determination and the sorting stage.
+                  </li>
+
+              </ul>
+          </ul>
+      </ol>
+
+
+
+<h3><a name="HowToFindCorrectOne">The powder auto-indexing outputs many unit-cells. How can I find the correct one? (Properties of figures of merit)</a></h3>
+<p>
+The most reliable way to distingush the correct unit cell is to compare computed lines of each solution with positions of diffraction peaks visually.
+By using figures of merit,
+it is possible to detect more plausible solutions automatically
+and reduce the number of unit cells to check largely.
+</p>
+<p>
+The following figures of merit are available at present:
+<ul>
+    <li> M<Sub>n</Sub> : de Wolff figure of merit [<a href="#ref1">1</a>], </li>
+    <li> M<Sub>n</Sub><Sup>Wu</Sup> : improved figure of merit proposed by Wu [<a href="#ref4">4</a>], </li>
+    <li> M<Sub>n</Sub><Sup>Rev</Sup> : reversed figure of merit, </li>
+    <li> M<Sub>n</Sub><Sup>Sym</Sup> : symmetric figure of merit, </li>
+    <li> NN<Sub>&epsilon;</Sub> : number of almost identical unit-cells among the ones enumerated, </li>
+</ul>
+where n and &epsilon; are the values for the MaxNumberOfPeaksForFOM and Resolution parameters, respectively.
+The values of the first four figures of merit become close to 1, if observed peak positions and computed lines of a fixed unit cell have no correlation.
+Unit cells with M<Sub>n</Sub> > 10, M<Sub>n</Sub><Sup>Wu</Sup> > 10, M<Sub>n</Sub><Sup>Rev</Sup> > 3 or 
+M<Sub>n</Sub><Sup>Sym</Sup> > 30 may be considered to be a plausible candidate.
+</p>
+<p>
+Among the available figures of merit, de Wolff figure of merit M<Sub>n</Sub> is superior in efficacy to the others.
+This is partly because of c, one of the following properties of M<Sub>n</Sub>:
+<ol type="a">
+    <li> Sensetivity to false peaks caused by impurities </li>
+    <li> Insensitivity to extinct reflections </li>
+    <li> The higher symmetric unit cell always receives a greated value when almost identical solutions exist and belong to different Bravais lattices
+ </li>
+</ol>
+Although M<Sub>n</Sub><Sup>Wu</Sup> also has the properties a and b,
+it has a marked tendency to select lower symmetic unit cells.
+M<Sub>n</Sub><Sup>Rev</Sup> has properties opposite to those of M<Sub>n</Sub>.
+In particular, it is insensitive to falase peaks.
+M<Sub>n</Sub><Sup>Sym</Sup> is given properties intermediate between M<Sub>n</Sub> and M<Sub>n</Sub><Sup>Rev</Sup>.
+</p>
+<p>
+A unit cell may be considered most likely correct if it received an outstanding value for M<Sub>n</Sub> 
+and is also ranked at the top at least among the unit cells of the same Bravais type for the other figures of merit.
+If every figure of merit ranks a different unit cell at the top in the group of the same Bravais type,
+various plausible solutions would have been generated.
+Even so, the correct solution is contained frequently in the list of enumerated unit cells
+and may be found by checking the list manually.
+</p>
+<p>
+However, even if the correct solution is included in the list of the enumerated solutions and the observed and computed lines are compared visually, 
+this does not mean that the correct solution will be distinguished, especially in cases where the powder diffraction pattern has poor quality. 
+Regarding this problem,
+you should also read the paragraphs for <a href="#UniqunessOfSolutions">uniquness of solutions in powder auto-indexing</a>,
+</p>
+
+
+<h3><a name="UniqunessOfSolutions">Uniqueness of solutions in powder auto-indexing</a></h3>
+<p>
+Powder auto-indexing solutions are not always uniquely determined
+from just the information about peak positions.
+Although existence of more than one solutions occurs in rare instances for low-symmetry unit cells,
+it is known that cubic, hexagonal, or rhombohedral cells
+have the same computed lines as lower-symmetry cells [<a href="#ref3">3</a>].
+This is a consequence of mathematical theorems and is not caused by observational problems.
+The following figure presents an example of a cubic(F) case:
+<div align="center">
+   <p class="image"><img src="../figures/ThreeSolutions.png" width="525" height="277" alt="Figure 1"></p>
+   <p class="caption ">Figure 1 : Example of different unit cells with the same computed lines.</p>
+</div>
+
+Even in such a case, 
+all the solutions are considered to be contained in the list of enumerated unit cells
+if observational problems are not severe
+because Conograph executes an extensive powder auto-indexing search.
+The best de Wolff figure of merit will be then given to the unit cell with the highest symmetry.
+Although this result is consistent with the general belief that higher-symmetry unit cells are more likely to be correct for the powder auto-indexing,
+it should be noted that this is not always the case.
+Consideration of systematic absences and the size of unit cells will be helpful for reducing the number of candidates in some cases.
+
+</p>
+
+
+
+<h2><a name="References">References</a></h2>
+<p>
+<OL>
+
+<a name="ref1"><LI></a>
+P. M. de Wolff, <BR>
+<i>A simplified criterion for the reliability of a powder pattern indexing</i>, J. Appl. Cryst., 1, pp. 108-113 (1968).</LI>
+
+<a name="ref2"><LI></a>
+C. Dong, F. Wu, H. Chen, <BR>
+<i>Correction of zero shift in powder diffraction patterns using the reflection-pair method</i>, J. Appl. Cryst., 32, pp. 850-853 (1999).</LI>
+
+<a name="ref3"><LI></a>
+A. D. Mighell & A. Santoro, <BR>
+<i>Geometrical Ambiguities in the Indexing of Powder Patterns</i>, J. Appl. Cryst., 8, pp. 372-374 (1975).</LI>
+
+<a name="ref4"><LI></a>
+E. Wu, <BR>
+<i>A modification of the de Wolff figure of merit for reliability of powder pattern indexing</i>, J. Appl. Cryst., 21, pp. 530-535 (1988).</LI>
+</OL>
+</p>
+
+
+<A HREF="#">［Back to top]</A>
+<A HREF="../InstructionsConograph.html">［Back to main page of Conograph］</A>
+
+</body>

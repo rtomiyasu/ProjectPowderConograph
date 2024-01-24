@@ -1,0 +1,72 @@
+<ZCodeParameters>
+ <ConographOutput>
+  <LatticeCandidate>
+   <CrystalSystem>         Cubic(F) </CrystalSystem>
+
+   <!-- a, b, c(angstrom), alpha, beta, gamma(deg.)-->
+   <ReducedLatticeParameters>   5.4347e+000   5.4347e+000   5.4347e+000   9.0000e+001   9.0000e+001   9.0000e+001 </ReducedLatticeParameters>
+   <OptimizedLatticeParameters>   5.4347e+000   5.4347e+000   5.4347e+000   9.0000e+001   9.0000e+001   9.0000e+001 </OptimizedLatticeParameters>
+
+   <VolumeOfUnitCell>   1.6052e+002 </VolumeOfUnitCell>
+   <FigureOfMeritWolff name="M20">   2.7575e+002 </FigureOfMeritWolff>
+   <FigureOfMeritWu name="Mwu20">   2.0696e+002 </FigureOfMeritWu>
+   <ReversedFigureOfMeritWolff name="Mrev20">   6.3628e+000 </ReversedFigureOfMeritWolff>
+   <SymmetricFigureOfMeritWolff name="Msym20">   1.7545e+003 </SymmetricFigureOfMeritWolff>
+   <!-- Number of reflections up to the 20th reflection. (The multiplicity of peaks is considered.)-->
+   <NumberOfMillerIndicesInRange>   3.3333e+001 </NumberOfMillerIndicesInRange>
+   <NumberOfIndexedPeaks>            20 </NumberOfIndexedPeaks>
+   <NumberOfPeaksNecessaryToResolveDominantZone>             2 </NumberOfPeaksNecessaryToResolveDominantZone>
+
+   <EquivalentLatticeCandidates>
+<!-- Almost equivalent unitcell parameters of different centring types. -->
+    <LatticeCandidate>
+     <Centring>Rhombohedral(hexagonal-axis) </Centring>
+     <LatticeParameters>   3.8429e+000   3.8429e+000   9.4131e+000   9.0000e+001   9.0000e+001   1.2000e+002 </LatticeParameters>
+    </LatticeCandidate>
+    <LatticeCandidate>
+     <Centring>            Inner </Centring>
+     <LatticeParameters>   3.8429e+000   3.8429e+000   5.4347e+000   9.0000e+001   9.0000e+001   9.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+    <LatticeCandidate>
+     <Centring>          Base(C) </Centring>
+     <LatticeParameters>   6.6561e+000   3.8429e+000   3.8429e+000   9.0000e+001   1.2526e+002   9.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+    <LatticeCandidate>
+     <Centring>          Base(C) </Centring>
+     <LatticeParameters>   5.4347e+000   5.4347e+000   3.8429e+000   9.0000e+001   1.3500e+002   9.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+    <LatticeCandidate>
+     <Centring>        Primitive </Centring>
+     <LatticeParameters>   3.8429e+000   3.8429e+000   3.8429e+000   6.0000e+001   9.0000e+001   6.0000e+001 </LatticeParameters>
+    </LatticeCandidate>
+   </EquivalentLatticeCandidates>
+
+   <IndexingResults>
+    <!-- q_obs, q_err, q_cal, peak_pos, peak_width, pos_cal, hkl, fix_or_fit.-->
+    1.0165e-001    9.5944e-004    1.0157e-001    3.1323e+004    1.4806e+002    3.1334e+004       [1,-1,1]    1
+    2.7081e-001    2.2744e-003    2.7086e-001    1.9180e+004    8.0594e+001    1.9178e+004        [0,2,2]    1
+    3.7247e-001    2.5753e-003    3.7243e-001    1.6353e+004    5.6555e+001    1.6354e+004       [1,-1,3]    1
+    5.4169e-001    4.1374e-003    5.4172e-001    1.3559e+004    5.1789e+001    1.3559e+004        [4,0,0]    1
+    6.4324e-001    5.1619e-003    6.4329e-001    1.2443e+004    4.9928e+001    1.2443e+004      [3,-3,-1]    1
+    8.1243e-001    7.1266e-003    8.1258e-001    1.1072e+004    4.8553e+001    1.1071e+004       [4,-2,2]    1
+    9.1390e-001    8.4080e-003    9.1415e-001    1.0439e+004    4.8010e+001    1.0438e+004       [3,-3,3]    1
+    1.0837e+000    6.3831e-003    1.0834e+000    9.5869e+003    2.8223e+001    9.5881e+003       [0,4,-4]    1
+    1.1852e+000    7.1917e-003    1.1850e+000    9.1675e+003    2.7802e+001    9.1682e+003        [3,1,5]    1
+    1.3544e+000    8.7369e-003    1.3543e+000    8.5760e+003    2.7646e+001    8.5763e+003       [0,6,-2]    1
+    1.4559e+000    9.7586e-003    1.4559e+000    8.2719e+003    2.7707e+001    8.2719e+003       [3,-3,5]    1
+    1.6253e+000    1.0930e-002    1.6252e+000    7.8292e+003    2.6308e+001    7.8295e+003       [4,-4,4]    1
+    1.7268e+000    1.1983e-002    1.7267e+000    7.5958e+003    2.6337e+001    7.5959e+003       [5,-5,1]    1
+    1.8960e+000    1.3535e-002    1.8960e+000    7.2492e+003    2.5854e+001    7.2491e+003       [4,-2,6]    1
+    1.9976e+000    1.4303e-002    1.9976e+000    7.0626e+003    2.5262e+001    7.0626e+003       [3,7,-1]    1
+    2.1667e+000    1.6211e-002    2.1669e+000    6.7816e+003    2.5346e+001    6.7813e+003        [0,0,8]    1
+    2.2685e+000    1.7086e-002    2.2684e+000    6.6278e+003    2.4936e+001    6.6279e+003       [7,3,-3]    1
+    2.4374e+000    1.9190e-002    2.4377e+000    6.3944e+003    2.5146e+001    6.3939e+003       [6,-6,0]    1
+    2.5390e+000    2.0190e-002    2.5393e+000    6.2651e+003    2.4883e+001    6.2648e+003       [5,7,-1]    1
+    2.7080e+000    2.2053e-002    2.7086e+000    6.0668e+003    2.4676e+001    6.0661e+003       [8,-4,0]    1
+   </IndexingResults>
+
+  </LatticeCandidate>
+
+
+ </ConographOutput>
+</ZCodeParameters>
