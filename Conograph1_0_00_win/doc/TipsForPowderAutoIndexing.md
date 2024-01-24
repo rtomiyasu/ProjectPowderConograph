@@ -1,4 +1,4 @@
-[to Japanese](https://github.com/arimuratak/Conograph-powder-auto-indexing-/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing_JP.md)
+[to Japanese](https://github.com/rtomiyasu/Conograph-powder-auto-indexing-/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing_JP.md)
 
 # Tips for powder auto-indexing using Conograph
 - [A table of parameters in the *.inp.xml file](#Table_1_Parameter)
@@ -113,7 +113,7 @@ However, even if the correct solution is included in the list of the enumerated 
 ## Uniqueness_of_solutions_in_powder_auto_indexing
 Powder auto-indexing solutions are not always uniquely determined from just the information about peak positions. Although existence of more than one solutions occurs in rare instances for low-symmetry unit cells, it is known that cubic, hexagonal, or rhombohedral cells have the same computed lines as lower-symmetry cells [[3](#References)]. This is a consequence of mathematical theorems and is not caused by observational problems. The following figure presents an example of a cubic(F) case:
 
-![ThreeSolutions](https://github.com/arimuratak/Conograph-powder-auto-indexing-/assets/149344913/c8b073f8-c40c-4222-8d86-c1e9244a11f4)
+![ThreeSolutions](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/d5c9b94b-f412-4875-a841-c03a0f8fa74e)
 ```
 Figure 1 : Example of different unit cells with the same computed lines.
 ```

@@ -1,4 +1,4 @@
-[to English](https://github.com/arimuratak/Conograph-powder-auto-indexing-/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing.md)
+[to English](https://github.com/rtomiyasu/Conograph-powder-auto-indexing-/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing.md)
 
 # Conographを用いた粉末指数づけについて
 - [入力パラメータ表 (XML ファイル)](#入力パラメータ表_XML_ファイル)
@@ -107,7 +107,7 @@ $`{M_n}^{W_u}`$ も性質 a, b を持ちますが、c に関しては全く逆�
 ## 粉末指数づけにおける解の一意性
 ピーク位置の情報からは、必ずしも格子定数が唯一つに決まるとは限りません。 複数の解が存在することは、低対称の格子定数では稀ですが、 立方晶、六方晶、三方晶の格子定数には、より対称性の低いブラベー格子に属する格子定数で、 同一のピーク位置を持つものが存在することが知られています [[3](#References)]。 これは数学によって示される現象のため、観測上の精度に関わりません。 以下の図は、cubic(F) の場合の具体例を示しています:
 
-![ThreeSolutions](https://github.com/arimuratak/Conograph-powder-auto-indexing-/assets/149344913/c8b073f8-c40c-4222-8d86-c1e9244a11f4)
+![ThreeSolutions](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/d5c9b94b-f412-4875-a841-c03a0f8fa74e)
 ```
 図 1 : 異なる格子定数が完全に一致するピーク位置を持つ例
 ```
