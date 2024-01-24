@@ -35,7 +35,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 1. 同プログラムを実行するには、以下の３つの入力ファイルを準備する必要があります。 (付属の "sample" フォルダに例があります。)
     - "*.inp.xml"：計算パラメータの入力ファイル ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR.inp.xml)),
     - "cntl.inp.xml" ： "*.inp.xml"を含む入出力ファイル名を指定するファイル ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/cntl.inp.xml)),
-    - IGOR テキストファイル: 粉末回折パターン (X, Y 座標と Y 座標の誤差) と以下のピークの情報を含むファイル (例。このファイルは付属の[ピークサーチプログラム](https://github.com/arimuratak/PeakSearch/tree/main)からも出力されます)
+    - IGOR テキストファイル: 粉末回折パターン (X, Y 座標と Y 座標の誤差) と以下のピークの情報を含むファイル (例。このファイルは付属の[ピークサーチプログラム](https://github.com/rtomiyasu/PeakSearch/tree/main)からも出力されます)
         1. ピーク位置 (2θ、time-of-flight、または d 値)、
         1. ピーク高さ (グラフ表示にのみ使用されます)、
         1. ピーク半値幅 (ピーク位置の誤差を推定するために使用します),
@@ -56,7 +56,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
     - IGOR テキストファイル: 精密化の間に出力された IGOR テキストファイルを一つにまとめたもの ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2_lattices.histogramIgor))
 
 ### ピークサーチに関するアドバイス
-まずは「ピーク高さを基準に回折ピークを出来るだけ一様に拾うようにする」ことをお勧めしています。 （Conograph付属の[ピークサーチプログラム](https://github.com/arimuratak/PeakSearch/tree/main)を用いて、そのようなピークサーチ結果を得るためのパラメータの設定方法は付属の取扱説明書の中で紹介しています。） どの回折ピークを組み合わせればよいかはConographの列挙アルゴリズムによって比較的短時間の間に判定されます。根拠のある事前情報をお持ちであれば別ですが、そうではない場合、回折ピークの選別を行うことや重畳ピークを人為的に除外することで、入力情報の質を落とすことは避けた方がよいです。
+まずは「ピーク高さを基準に回折ピークを出来るだけ一様に拾うようにする」ことをお勧めしています。 （Conograph付属の[ピークサーチプログラム](https://github.com/rtomiyasu/PeakSearch/tree/main)を用いて、そのようなピークサーチ結果を得るためのパラメータの設定方法は付属の取扱説明書の中で紹介しています。） どの回折ピークを組み合わせればよいかはConographの列挙アルゴリズムによって比較的短時間の間に判定されます。根拠のある事前情報をお持ちであれば別ですが、そうではない場合、回折ピークの選別を行うことや重畳ピークを人為的に除外することで、入力情報の質を落とすことは避けた方がよいです。
 
 ### CUIとGUIの主な違い
 ソフトウェア IGOR Pro をお持ちであれば、CUIを用いた解析もそれほど面倒ではありません。 以下では、GUIとの違いを説明します。

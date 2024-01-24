@@ -36,7 +36,7 @@ If you have not used Conograph before, then it is best to choose the regular sea
 1. The Conograph program requires the following three input files. (Examples can be found in the sample folder.)
     - A *.inp.xml file that includes information about the input parameters ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR.inp.xml))
     - A cntl.inp.xml that includes the names of the *.inp.xml file and the output file ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/cntl.inp.xml))
-    - An IGOR text file that includes a powder diffraction pattern (X and Y coordinates and the error in Y) and the following information about peaks ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR_pks.histogramIgor). This file is outputted from the [peak search program](https://github.com/arimuratak/PeakSearch/tree/main) distributed separately)
+    - An IGOR text file that includes a powder diffraction pattern (X and Y coordinates and the error in Y) and the following information about peaks ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR_pks.histogramIgor). This file is outputted from the [peak search program](https://github.com/rtomiyasu/PeakSearch/tree/main) distributed separately)
         1. peak-positions (2θ, time-of-flight, d)
         1. peak-heights (used only for display)
         1. full-widths-at-half-maximum (used to estimate errors of the peak-positions)
@@ -55,7 +55,7 @@ If you have not used Conograph before, then it is best to choose the regular sea
     - an IGOR text file unifying the IGOR text files output during refinement ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2_lattices.histogramIgor))
 
 ### Tips_for_peak_searching
-If you have not used Conograph before, then our advice in peak search is to pick up all the diffraction peaks as uniformly as possible on the basis of their peak-heights. (Such results will be obtained easily by using the [peak search program](https://github.com/arimuratak/PeakSearch/tree/main) equipped with Conograph.) The enumeration algorithm of Conograph then determines in a comparatively short time which combinations of peaks provide better solutions. Unless you have any prior information about diffraction peaks, it is better to avoid reducing the quality of input information by selecting peaks or removing overlapped peaks artificiality.
+If you have not used Conograph before, then our advice in peak search is to pick up all the diffraction peaks as uniformly as possible on the basis of their peak-heights. (Such results will be obtained easily by using the [peak search program](https://github.com/rtomiyasu/PeakSearch/tree/main) equipped with Conograph.) The enumeration algorithm of Conograph then determines in a comparatively short time which combinations of peaks provide better solutions. Unless you have any prior information about diffraction peaks, it is better to avoid reducing the quality of input information by selecting peaks or removing overlapped peaks artificiality.
 
 ### Differences_between_CUI_and_GUI
 As long as the IGOR Pro software is available, powder auto-indexing in the CUI is not difficult. The following are the chief advantages of the GUI.
