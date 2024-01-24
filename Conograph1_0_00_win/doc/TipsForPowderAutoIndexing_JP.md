@@ -1,4 +1,4 @@
-[to English](https://github.com/rtomiyasu/Conograph-powder-auto-indexing-/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing.md)
+[to English](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing.md)
 
 # Conographを用いた粉末指数づけについて
 - [入力パラメータ表 (XML ファイル)](#入力パラメータ表_XML_ファイル)
