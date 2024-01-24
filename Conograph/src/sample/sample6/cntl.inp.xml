@@ -1,0 +1,10 @@
+<ZCodeParameters>
+  <ConographInputFile>
+    <!-- Control parameters for calculation.-->
+    <ControlParamFile> ErythroAII-SR.inp.xml </ControlParamFile>
+    <!-- Peak-position data.-->
+    <PeakDataFile> ErythroAII-SR_pks.histogramIgor </PeakDataFile>
+    <!-- Output file -->
+    <OutputFile> output/ErythroAII-SR.index.xml </OutputFile>
+  </ConographInputFile>
+</ZCodeParameters>
