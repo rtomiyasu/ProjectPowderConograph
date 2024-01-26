@@ -1,82 +1,123 @@
-[to English](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/README.md)
+[to English](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/README.md)
 
-# Conograph CUI プログラムの操作説明書
-以下では、オープンソースの粉末指数づけプログラム [Conogaph CUI Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win)について簡単に説明します。Conograph GUI は現在開発中です (2013/3/2)。 Conograph は粉末指数づけの新しい数学的手法を採用しており、現時点でその手法を紹介している文献に、[[2](#References)]と[[3](#References)]があります。
+# EBSD-CONOGRAPH (CUI版プログラム)の操作説明書
 
-![outline_JP](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/61c8335b-f1c1-4388-ae64-f13eff53a78e)
+## 概要
+以下では，オープンソースの[EBSD-CONOGRAPH Version 0.99](https://github.com/rtomiyasu/ProjectEBSDConograph/tree/main/EBSDConograph_0_9_99_win) について説明します．
+このプログラムは， もともと粉末回折のために開発されたConographの方法に基づき， 電子線後方回折(EBSD)の菊池パターン (Figure 1)のバンド情報から，格子定数の推定とバンドの指数付けを同時に行うab-initio indexingを実施します．
+
+![KikuchiPattern](https://github.com/rtomiyasu/ProjectEBSDConograph/assets/149344913/79144fc3-949f-4cda-84c1-c193fe564090)
 ```
-図 1: Conograph による粉末指数づけの３つの主要ステージ
+Figure 1 : 菊池パターン(鋼のシミュレーションデータ)とバンド抽出結果．黄色線はバンドの中心線（またはその平行線）を示す．
+赤線はパターンセンターを通るバンドの垂線の一部で，バンド幅を示す．
 ```
-Conograph は中性子飛行時間法を含む任意の粉末回折データに対し、比較的短時間で解の徹底探索を行うことができます。 ピークサーチ実行後に行われる粉末指数づけは、図1の3つのステージに大別することができます。 Conograph は全てのブラベー格子、空間群、消滅則に共通する解の列挙手法を採用しているため、ブラベー格子決定が必要になります。 得られた格子定数は入力されたピーク位置の観測誤差から波及する誤差をある程度含むため、 誤差に安定なブラベー格子決定手法を新たに開発しました [[3](#References)]。
+## 事前情報
+ソフトウェア実行前に，菊池パターンから抽出する必要がある情報は:
+1. バンドの中心線の座標 (φ, σ),
+1. バンド幅 $`(σ_{begin}`$, $`σ_{end})`$.
 
-メモリ使用量優先探索 (regular search) を選択した場合、Conograph が準備している探索パラメータから特に大きな変更が行われなければ、全てのステージの実行は約10分程度で終了します。 速さ優先探索 (quick search) では、約5分以内に全ての処理が終了します。 (ただし、i7 CPU (3.2 GHz, 8スレッド)を使用した結果で、ご使用のパソコンによってはもっと時間がかかる場合があります。)
+EBSDソフトウェアには，PC座標の補正とバンド検出を自動で行うプログラムが必要ですが， 配布中のソフトウェアにはまだ実装されていません． これは，それぞれの手法の精度および信頼性の向上が研究途上であることも反映しています．
 
-初めて Conograph を使用する際は、難しいケースでも入力する探索パラメータの変更の必要がほとんどない「メモリ使用量優先探索」を選択することをお勧めしています。ただし、「速さ優先探索」でも、ユニットセルが小さいまたは対称性が高いといった簡単なケースでは、 入力パラメータの変更が必要ないことが多いです。 「速さ優先探索」と「メモリ使用量優先探索」の違いは、[ここ](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing_JP.md#Quick_searchとregular_searchの主な違い)でもう少し詳しく説明しています。
+指数付けの手法およびプログラムは，上記の事前処理とは独立に実装できます． PCやバンド座標がある程度の誤差を含む場合も，以下の原理的な問題を無視すれば， 正解に近い格子定数を得ることは可能です:
 
-## NEWS
-### 2016/9/7
-- 底心格子に関する出力形式に関する誤りを訂正しました。
+- PCやバンドの中心線，バンド幅の誤差が大きいほど，得られたユニットセルの精度も悪くなる.
+- ab-initio indexingでは，同程度に良い複数の異なる解が生じることがあり， 特に，バンドエッジが明瞭でなく格子の対称性が低いときに起こる [1]．
 
 ## FAQ
-- [Conograph CUI の使い方](#Conograph_CUIの使い方)
-    - [Conograph を実行する](#Conographを実行する)
-    - [実行後に格子定数とゼロ点シフトを精密化する](#実行後に格子定数とゼロ点シフトを精密化する)
-- [ピークサーチに関するアドバイス](#ピークサーチに関するアドバイス)
-- [Conograph を用いた粉末指数づけについて](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing_JP.md) (別ページに移動します)
-    - 入力パラメータ表（XML ファイル）
-    - 「速さ優先探索」と「メモリ使用量優先探索」の主な違い
-    - 満足できる結果が得られないときに変更するパラメータ
-    - 正しい解はどれですか? (figure of meritを用いた判定方法)
-    - 粉末指数づけにおける解の一意性
-- [CUI と GUI の主な違い](#CUIとGUIの主な違い)
+- [EBSD-CONOGRAPHの使い方](#EBSD-CONOGRAPHの使い方
+)
+- [入出力ファイルの内容について](#入出力ファイルの内容について)
+  - [入力ファイル](#入力ファイル)
+  - [出力されるパラメータ](#出力されるパラメータ)
+  - [Figure of merit Mnew](#Figure_of_merit_Mnew)
+- [うまくいかないときに変更するinput.txtのパラメータ](#うまくいかないときに変更するinput_txtのパラメータ)
 
-### Conograph_CUIの使い方
-#### Conographを実行する
-1. 同プログラムを実行するには、以下の３つの入力ファイルを準備する必要があります。 (付属の "sample" フォルダに例があります。)
-    - "*.inp.xml"：計算パラメータの入力ファイル ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR.inp.xml)),
-    - "cntl.inp.xml" ： "*.inp.xml"を含む入出力ファイル名を指定するファイル ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/cntl.inp.xml)),
-    - IGOR テキストファイル: 粉末回折パターン (X, Y 座標と Y 座標の誤差) と以下のピークの情報を含むファイル (例。このファイルは付属の[ピークサーチプログラム](https://github.com/rtomiyasu/PeakSearch/tree/main)からも出力されます)
-        1. ピーク位置 (2θ、time-of-flight、または d 値)、
-        1. ピーク高さ (グラフ表示にのみ使用されます)、
-        1. ピーク半値幅 (ピーク位置の誤差を推定するために使用します),
-        1. 各ピークについて、指数づけおよび figure of merit の計算に使用しない/するを指定するための 0/1 フラグ。
+## EBSD-CONOGRAPHの使い方
+1. 同プログラムを実行するには，以下のdata.txt, input.txtを入力ファイルとして準備する必要があります． （付属の Sample フォルダに入力例があります．）
+    1. input.txt: 探索ファイルや出力を調整する入力パラータを含む ([例](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/EBSDConograph_0_9_99_win/sample/Fe(four_columns%2Cuse_only_band_centers)/input.txt))。
+    1. data.txt: バンドの中心線とバンド幅の情報を含む．
+        1. Example 1: [data.txt](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/EBSDConograph_0_9_99_win/sample/Fe(three_columns%2Cuse_band_widths)/data.txt) (3列データ: $`σ`$, $`σ_{begin}`$, $`σ_{end}`$。 このときσは、$`(σ_{begin} + σ_{end}) / 2`$とする),
+        1. Example 2: [data.txt](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/EBSDConograph_0_9_99_win/sample/Fe3C(four_columns%2Cuse_band_width)/data.txt) (4列データ: $`φ`$, $`σ`$, $`σ_{begin}`$, $`σ_{end}`$).
+        1. data.txtの1行目では，以下のいずれを実行するかのフラグ 0/1を指定してください(3,4列データどちらでも同じ)．
+        1. 1: $`φ`$, $`σ`$, $`σ_{begin}`$, $`σ_{end}`$からの，格子定数の推定 * この場合，一般に，バンド幅($`σ_{begin}`$, $`σ_{end}`$)の精度が悪いため，得られる格子定数の精度も悪くなります。
+        1. 0: $`φ`$, $`σ`$からの，比 $`a/c`$, $`b/c`$ と角度 $`α`$, $`β`$, $`γ`$ の推定．
+1. Sampleフォルダの中の一つのフォルダをコピーし， コピー先のフォルダ内のdata.txtを(解析結果をもっとよくしたい場合，input.txtも)適宜修正してください。
+1. コマンドプロンプト，またはお使いのOSのターミナルウィンドウを立ち上げ， 上で変更した入力ファイルと同じフォルダにカレントフォルダを移動してください
+1. コマンドプロンプトより，EBSDConograph.exeのパスを入力して実行します．
 
-1. "sample"フォルダの中の一つのフォルダをコピーし、 コピー先のフォルダ内の二つのXMLファイルの中身とファイル名"*.inp.xml"、IGOR テキストファイルの 0/1 フラグを適宜修正してください。 ファイル名"*.inp.xml"を変更した際は、"cntl.inp"のファイル名も併せて修正する必要があります。
-1. コマンドプロンプト、またはお使いのOSのターミナルウィンドウを立ち上げ、 上で変更した"cntl.inp"と同じフォルダにカレントフォルダを移動してください。
-1. "Conograph.exe"の絶対パスをコマンドラインから入力し、Conographwを実行します。
-1. CUI は格子定数のリストを含む XML ファイル（[六方晶の例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2.index.xml)）を出力し、入力待ち状態に入ります。XML ファイルの最上部には、各々の figure of merit について最も良い値を得た格子定数がブラベー格子ごとに表示されます。そのすぐ下に、 得られた全ての格子定数の中で最も良い de Wolff figure of merit [[4](#References)] の値を得た格子定数が表示されます。
+## 入出力ファイルの内容について
+### 入力ファイル
+Figure 2 にexplains how $`φ`$, $`σ`$, $`σ_{begin}`$, $`σ_{end}`$ がEBSD画像のバンド座標, バンド幅からどのように与えられるかを示します．
+![KosselCone](https://github.com/rtomiyasu/ProjectEBSDConograph/assets/149344913/d944fc7c-c291-414b-830f-b5768005fba1)
 
-#### 実行後に格子定数とゼロ点シフトを精密化する
-1. 出力 XML ファイルの中に表示されている格子定数は、"0403003"のような数字が付いています。 コマンドラインからその数字を入力すると、該当の格子定数とゼロ点シフトが精密化された後、以下の情報を含む IGOR テキストファイルが出力されます。([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2_lattice(Hexagonal_23.1%2C23.1%2C10.7%2C90%2C90%2C120_70.3).histogramIgor)):
-    1. 入力 IGOR text file に含まれる情報のコピー、
-    1. 指定した格子定数が与えるピーク位置、
-    1. 指定した格子定数とブラベー格子。
-1. 数字は何度でも入力できます。Conograph を終了させるにはquit" と入力してください。終了時に以下のファイルが出力されます:
-    - XML ファイル: 精密化された各格子定数とゼロ点シフトの情報を記載したもの ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2.index2.xml))
-    - IGOR テキストファイル: 精密化の間に出力された IGOR テキストファイルを一つにまとめたもの ([例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/figures/sample2_lattices.histogramIgor))
+- Figure 2:
+  - (a) バンドの中心線は， 蛍光板とprojection center(PC)を通る回折面の交わり。パターンセンター O はPCから蛍光板に下した垂線の足の座標に等しい。
+  - (b) バンドエッジは，蛍光板と円錐面 (Kossel cone)の交わり，よって双曲線になる ([式](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/html/FormulasForEBSDBandEdges_jp.md)). 
+  - (c) 蛍光板は紙面と並行とし，長さの単位はカメラ長(= PCと蛍光板の距離)が1となるよう設定する． このとき，φは，X軸とPC2からバンドの中心線に下した垂線がなす角度に等しい． また，Oとバンドの中心線, バンドエッジとの距離から $`σ`$, $`σ_{begin}`$, $`σ_{end}`$が得られる．
 
-### ピークサーチに関するアドバイス
-まずは「ピーク高さを基準に回折ピークを出来るだけ一様に拾うようにする」ことをお勧めしています。 （Conograph付属の[ピークサーチプログラム](https://github.com/rtomiyasu/PeakSearch/tree/main)を用いて、そのようなピークサーチ結果を得るためのパラメータの設定方法は付属の取扱説明書の中で紹介しています。） どの回折ピークを組み合わせればよいかはConographの列挙アルゴリズムによって比較的短時間の間に判定されます。根拠のある事前情報をお持ちであれば別ですが、そうではない場合、回折ピークの選別を行うことや重畳ピークを人為的に除外することで、入力情報の質を落とすことは避けた方がよいです。
+バンド幅情報は，長さの比a/c, b/cと角度α, β, γ を一意に決めるため，さらに格子定数のスケール (よってa, b, c)を得るために必要です．実際，図2(b)にみるように，ブラッグ角 θ は， $`2θ = σ_{end} - σ_{begin}`$ より，バンド幅から得ることができます．さらにブラッグの法則より，
 
-### CUIとGUIの主な違い
-ソフトウェア IGOR Pro をお持ちであれば、CUIを用いた解析もそれほど面倒ではありません。 以下では、GUIとの違いを説明します。
+$`2dsinθ = nλ`$, $`d`$ : 回折面の格子面間隔,
+$`n`$ : 整数, $`λ`$ : 電子線ビームの波長
 
-- GUI上ではピークサーチも実行できます。
-- GUI 起動時に各パラメータの推奨値がテキストボックスに自動でセットされます。
-- GUI起動時には recommended values are automatically set in the text boxes for respective input parameters.
-- GUIでは、粉末回折パターンと各格子定数に対して計算されるピーク位置の比較を、より容易に高い自由度の下で行うことが出来ます。
-- GUIでは、de Wolff figure of merit 以外の基準を用いて解のソートを行うことが出来ます。
-- CUIでは一連の手続きとして実行している以下の機能を、 GUIでは独立に実行することが出来ますので、計算のやり直しに要するコストが小さくなります。>
-    1. 指数づけ実行前に行う、reflection pair method [[1](#References)]によるゼロ点シフト Δ2θ の推定 (CUI使用時は、解析初期に画面上にいくつかの候補値が出力されます。)
-    1. 解のソートに使用する de Wolff figure of merit Mnの計算に用いる n の推定 (dominant zone と呼ばれる問題が生じている場合、n = 20以上の値を使用する必要があります。)
-- CUIでは、上記の推定値を使用する際、プログラムを一度終了させる必要があります。 特に a. について、 正しい値が Δ2θ = 0.195° と非常に大きなケースでも、 Conograph からは十分な結果が得られており、 多くのケースで Δ2θ = 0 を使用し、指数づけ後の精密化を行えば十分と考えられることから、CUIはこのような簡易な実装になっています。
+このとき，各回折面に垂直な逆格子ベクトルを $`na^*`$($`n`$ : 整数)とすると、（||はベクトルの長さ）
 
-図2 は CUI のフローチャートです:
+$`\sinθ = nλ/2d = |na^*|λ/2`$  (1)
 
-![flowchart_JP](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60)
+式(1)より、$`na^∗`$ ($`n`$: 整数)のミラー指数 $`n(hkℓ)`$ に バンドの中心線は同一ですが， バンド幅は異なります。もっともよく見えるのは $`n=±1`$ のバンドであることが多いですが， 構造因子の大きさや空間群の消滅則の影響があり(Nolze & Winkelmann, 2017)，さらに例外もあるようです(Fig.19 of Day (2008))。
 
-## References
-1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
-1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, preprint.
-1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A, 68, pp. 525-535 (2012).
-1. P. M. de Wolff,<br>A simplified criterion for the reliability of a powder pattern indexing, J. Appl. Cryst., 1, pp. 108-113 (1968).
+### 出力されるパラメータ
+以下はソフトウェアの出力ファイルの例です:
+- Example 1: [out.txt](https://github.com/rtomiyasu/ProjectEBSDConograph/tree/main/EBSDConograph_0_9_99_win/sample/Fe(three_columns%2Cuse_band_widths)) (バンド幅を用いた場合)
+- Example 2: [out.txt](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/EBSDConograph_0_9_99_win/sample/Fe(four_columns%2Cuse_only_band_centers)/output/out.txt) (φ, σのみを用いた場合)
+
+出力ファイルout.txtの各格子定数は，ブラべー格子で分類され， [1]で定義されたfigure of merit ($`m^{new}`$)でソートされています。 また以下のパラメータも非線形最小二乗法による精密化の後、出力されます。
+
+1. 以下の関係式を満たす実格子基底 $`a_1, a_2, a_3`$ とその各成分の推定誤差::
+   $` 
+ \begin{pmatrix}
+  a_1・a_1 & a_1・a_2 & a_1・a_3 \\
+  a_2・a_1 & a_2・a_2 & a_2・a_3 \\
+  a_3・a_1 & a_3・a_2 & a_3・a_3 
+ \end{pmatrix} = \begin{pmatrix}
+  a^2 & ab\cos{γ} & ac\cos{β} \\
+  ab\cos{γ} & b^2 & bc\cos{α} \\
+  ac\cos{β} & bc\cos{α} & c^2 
+ \end{pmatrix}, a,b,c,α,β,γ`$ : 格子定数
+2. 実格子の向き(具体的には以下の直交行列 $`G`$)を表すオイラー角 $`θ_1`$, $`θ_2`$, $`θ_3`$ とその推定誤差:
+   $`G:=L^{-1}A=
+   \begin{pmatrix}\cos{θ_1} & \sin{θ_1} & 0 \\-\sin{θ_1} & \cos{θ_1} & 0 \\0 & 0 & 1\end{pmatrix}
+   \begin{pmatrix}1 & 0 & 0 \\0 & \cos{θ_2} & \sin{θ_2} \\0 & -\sin{θ_2} & \cos{θ_2} \end{pmatrix}
+   \begin{pmatrix}\cos{θ_3} & \sin{θ_3} & 0 \\-\sin{θ_3} & \cos{θ_3} & 0 \\0 & 0 & 1\end{pmatrix}`$,
+
+   ただし、$`A`$は格子基底 $`a_1`$, $`a_2`$, $`a_3`$ を各行とする3×3行列、$`L`$ は $`LL^T = AA^T`$ を満たす下三角行列。
+
+3. PCシフト $`Δx`$, $`Δy`$, $`Δz`$ とその推定誤差、入力ファイルdata.txt作成時に仮定したカメラ長, パターンセンターの座標を $`L^{old}`$, $`(X^{old}, Y^{old})`$ としたとき、新しいカメラ長 $`L^{new}`$ ととパターンセンターの座標 $`(X^{new}, Y^{new})`$ は以下に等しい:
+
+   $`L^{new}=(1-Δz)L^{old}`$
+   
+   $`(X^{new}, Y^{new}) = (X^{old}, Y^{old}) + (L^{old}Δx, L^{old}Δy)`$
+
+これら out.txt 内のパラメータに関する注意点として，
+- まれに，$`M^{new}`$ やカイ二乗値などの指標 が精密化によって悪くなるが，これは、各バンドに割り当てられるミラー指数が精密化の結果，変わるため。
+- 上記の推定誤差は， 入力角 $`φ`$, $`σ`$, $`σ_{begin}`$, $`σ_{end}`$ が 1度程度の誤差を有するという仮定の下で 非線形最小二乗法を実施したときの波及誤差になる．
+
+### Figure_of_merit_Mnew
+$`M^{new}は粉末回折のde Wolff Mの一般化として定義されるため， Mは対称性の高い格子を好むという点を除けば， 非常によく似た性質を持ちます ([参照](https://github.com/rtomiyasu/ProjectEBSDConograph/blob/main/EBSDConograph_0_9_99_win/figures/table5_2_jp.png))．すなわち，
+- ある格子定数について$`M^{new} > 10`$ なら，指数付けに成功した可能性が高い。
+- 正しい格子定数は，最も大きな $`M^{new}`$ を得た格子定数のうちのどれかと考えられる。
+- ほぼ同じ格子定数はBravais typeが異なる場合も，$`M^{new}`$ の値はほぼ同じになる。
+
+したがって，リストから正しい格子定数を選ぶ際は， figure of meritの値と，どのブラベー格子に分類されているかの両方をチェックしてください．
+
+## うまくいかないときに変更するinput_txtのパラメータ
+探索方法は以下の2通りから選択できます。
+- 高速探索 (対称性が高いユニットセルには十分な場合が多い)
+- 徹底探索 (全てのケースに有効)
+
+以下の値を大きくすると探索領域はさらに拡大できますが(上のパラメータほど影響力が強い, input.txt内の説明も参照)， すでに大きめの値がデフォルト値として設定されています:
+
+- Upper bound on errors in phi, sigma, sigma_begin, sigma_end (入力角の誤差の上界): 1 度,
+- Max |h|,|k|,|l| used for indexing (指数付けに用いる|h|,|k|,|l|の最大値): 7,
+- Tolerance level for errors in the unit-cell scales (格子定数スケールの誤差の許容レベル): 3.,
+- Resolution for Bravais-type determination (ブラベー格子決定で仮定する格子定数の解像度): 0.02.
