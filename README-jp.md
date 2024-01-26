@@ -3,7 +3,7 @@
 # Conograph CUI プログラムの操作説明書
 以下では、オープンソースの粉末指数づけプログラム [Conogaph CUI Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win)について簡単に説明します。Conograph GUI は現在開発中です (2013/3/2)。 Conograph は粉末指数づけの新しい数学的手法を採用しており、現時点でその手法を紹介している文献に、[[2](#References)]と[[3](#References)]があります。
 
-<img alt="outline_JP" src="https://https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/61c8335b-f1c1-4388-ae64-f13eff53a78e" width="40%">
+<img alt="outline_JP" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/61c8335b-f1c1-4388-ae64-f13eff53a78e" width="40%">
 
 ```
 図 1: Conograph による粉末指数づけの３つの主要ステージ
