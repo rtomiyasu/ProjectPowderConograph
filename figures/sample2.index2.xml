@@ -1,0 +1,97 @@
+<ZCodeParameters>
+ <ConographOutput>
+  <LatticeCandidate>
+   <CrystalSystem>        Hexagonal </CrystalSystem>
+
+   <!-- a, b, c(angstrom), alpha, beta, gamma(deg.)-->
+   <ReducedLatticeParameters>   2.3113e+001   2.3113e+001   1.0665e+001   9.0000e+001   9.0000e+001   1.2000e+002 </ReducedLatticeParameters>
+   <OptimizedLatticeParameters>   2.3113e+001   2.3113e+001   1.0665e+001   9.0000e+001   9.0000e+001   1.2000e+002 </OptimizedLatticeParameters>
+
+   <VolumeOfUnitCell>   4.9340e+003 </VolumeOfUnitCell>
+   <FigureOfMeritWolff name="M20">   7.0280e+001 </FigureOfMeritWolff>
+   <FigureOfMeritWu name="Mwu20">   4.8376e+001 </FigureOfMeritWu>
+   <ReversedFigureOfMeritWolff name="Mrev20">   5.6605e+000 </ReversedFigureOfMeritWolff>
+   <SymmetricFigureOfMeritWolff name="Msym20">   3.9782e+002 </SymmetricFigureOfMeritWolff>
+   <!-- Number of reflections up to the 20th reflection. (The multiplicity of peaks is considered.)-->
+   <NumberOfMillerIndicesInRange>   2.3000e+001 </NumberOfMillerIndicesInRange>
+   <NumberOfIndexedPeaks>            20 </NumberOfIndexedPeaks>
+   <NumberOfPeaksNecessaryToResolveDominantZone>             5 </NumberOfPeaksNecessaryToResolveDominantZone>
+
+   <IndexingResults>
+    <!-- q_obs, q_err, q_cal, peak_pos, peak_width, pos_cal, hkl, fix_or_fit.-->
+    2.4941e-003    4.6676e-005    2.4959e-003    3.4069e+000    7.5487e-002    3.4081e+000       [1,-1,0]    1
+    7.4892e-003    7.7329e-005    7.4876e-003    5.9185e+000    7.2236e-002    5.9179e+000       [2,-1,0]    1
+    9.9850e-003    8.7226e-005    9.9834e-003    6.8377e+000    7.0599e-002    6.8372e+000        [2,0,0]    1
+    1.1290e-002    9.8386e-005    1.1288e-002    7.2724e+000    7.4907e-002    7.2719e+000        [1,0,1]    1
+    1.6278e-002    1.8395e-004    1.6280e-002    8.7387e+000    1.1674e-001    8.7392e+000      [2,-1,-1]    1
+    1.7471e-002    1.1646e-004    1.7471e-002    9.0547e+000    7.1358e-002    9.0546e+000       [3,-1,0]    1
+    1.8792e-002    2.0372e-004    1.8776e-002    9.3921e+000    1.2038e-001    9.3880e+000       [2,0,-1]    1
+    2.2463e-002    1.3076e-004    2.2463e-002    1.0272e+001    7.0722e-002    1.0272e+001       [3,-3,0]    1
+    2.6254e-002    2.2000e-004    2.6263e-002    1.1110e+001    1.1014e-001    1.1112e+001       [3,-1,1]    1
+    2.9950e-002    1.4681e-004    2.9950e-002    1.1870e+001    6.8856e-002    1.1870e+001       [4,-2,0]    1
+    3.1242e-002    2.5428e-004    3.1255e-002    1.2124e+001    1.1680e-001    1.2127e+001       [3,-3,1]    1
+    3.2445e-002    1.5688e-004    3.2446e-002    1.2357e+001    7.0728e-002    1.2357e+001       [4,-3,0]    1
+    3.7650e-002    2.0689e-004    3.7665e-002    1.3317e+001    8.6666e-002    1.3319e+001       [1,0,-2]    1
+    3.9942e-002    1.6589e-004    3.9934e-002    1.3718e+001    6.7495e-002    1.3717e+001        [4,0,0]    1
+    4.1131e-002    3.2053e-004    4.1238e-002    1.3922e+001    1.2855e-001    1.3941e+001      [4,-3,-1]    1
+    4.2661e-002    2.5326e-004    4.2656e-002    1.4181e+001    9.9756e-002    1.4180e+001       [2,-1,2]    1
+    4.5213e-002    3.4089e-004    4.5152e-002    1.4601e+001    1.3049e-001    1.4592e+001       [2,0,-2]    1
+    4.7415e-002    1.8440e-004    4.7421e-002    1.4955e+001    6.8957e-002    1.4956e+001       [5,-3,0]    1
+    4.8713e-002    4.2392e-004    4.8726e-002    1.5160e+001    1.5643e-001    1.5162e+001        [4,0,1]    1
+    5.2456e-002    2.5871e-004    5.2413e-002    1.5736e+001    9.2061e-002    1.5729e+001       [5,-4,0]    1
+   </IndexingResults>
+
+   <OptimizedZeroShitParameters>
+    <Parameter>    1.7992e-002  </Parameter>  <Error>    2.5821e-002  </Error>
+   </OptimizedZeroShitParameters>
+  </LatticeCandidate>
+
+  <LatticeCandidate>
+   <CrystalSystem>  Orthorhombic(P) </CrystalSystem>
+
+   <!-- a, b, c(angstrom), alpha, beta, gamma(deg.)-->
+   <ReducedLatticeParameters>   1.0665e+001   1.1558e+001   2.0016e+001   9.0000e+001   9.0000e+001   9.0000e+001 </ReducedLatticeParameters>
+   <OptimizedLatticeParameters>   1.0665e+001   1.1558e+001   2.0016e+001   9.0000e+001   9.0000e+001   9.0000e+001 </OptimizedLatticeParameters>
+
+   <VolumeOfUnitCell>   2.4673e+003 </VolumeOfUnitCell>
+   <FigureOfMeritWolff name="M20">   5.4078e+001 </FigureOfMeritWolff>
+   <FigureOfMeritWu name="Mwu20">   4.8502e+001 </FigureOfMeritWu>
+   <ReversedFigureOfMeritWolff name="Mrev20">   5.9682e+000 </ReversedFigureOfMeritWolff>
+   <SymmetricFigureOfMeritWolff name="Msym20">   3.2275e+002 </SymmetricFigureOfMeritWolff>
+   <!-- Number of reflections up to the 20th reflection. (The multiplicity of peaks is considered.)-->
+   <NumberOfMillerIndicesInRange>   3.0000e+001 </NumberOfMillerIndicesInRange>
+   <NumberOfIndexedPeaks>            20 </NumberOfIndexedPeaks>
+   <NumberOfPeaksNecessaryToResolveDominantZone>             8 </NumberOfPeaksNecessaryToResolveDominantZone>
+
+   <IndexingResults>
+    <!-- q_obs, q_err, q_cal, peak_pos, peak_width, pos_cal, hkl, fix_or_fit.-->
+    2.4938e-003    4.6672e-005    2.4960e-003    3.4069e+000    7.5487e-002    3.4084e+000        [0,0,1]    1
+    7.4886e-003    7.7326e-005    7.4858e-003    5.9185e+000    7.2236e-002    5.9174e+000        [0,1,0]    1
+    9.9843e-003    8.7223e-005    9.9818e-003    6.8377e+000    7.0599e-002    6.8368e+000        [0,1,1]    1
+    1.1289e-002    9.8383e-005    1.1288e-002    7.2724e+000    7.4907e-002    7.2721e+000       [1,0,-1]    1
+    1.6277e-002    1.8394e-004    1.6278e-002    8.7387e+000    1.1674e-001    8.7389e+000       [1,-1,0]    1
+    1.7470e-002    1.1646e-004    1.7470e-002    9.0547e+000    7.1358e-002    9.0545e+000        [0,1,2]    1
+    1.8791e-002    2.0372e-004    1.8776e-002    9.3921e+000    1.2038e-001    9.3883e+000       [1,0,-2]    1
+    2.2462e-002    1.3076e-004    2.2464e-002    1.0272e+001    7.0722e-002    1.0273e+001        [0,0,3]    1
+    2.6253e-002    2.2000e-004    2.6262e-002    1.1110e+001    1.1014e-001    1.1111e+001      [1,-1,-2]    1
+    2.9948e-002    1.4680e-004    2.9950e-002    1.1870e+001    6.8856e-002    1.1870e+001        [0,1,3]    1
+    3.1240e-002    2.5428e-004    3.1256e-002    1.2124e+001    1.1680e-001    1.2127e+001       [1,0,-3]    1
+    3.2444e-002    1.5688e-004    3.2439e-002    1.2357e+001    7.0728e-002    1.2356e+001       [0,2,-1]    1
+    3.7649e-002    2.0689e-004    3.7664e-002    1.3317e+001    8.6666e-002    1.3319e+001       [2,0,-1]    1
+    3.9941e-002    1.6588e-004    3.9936e-002    1.3718e+001    6.7495e-002    1.3718e+001        [0,0,4]    1
+    4.1129e-002    3.2053e-004    4.1231e-002    1.3922e+001    1.2855e-001    1.3940e+001      [1,-2,-1]    1
+    4.2660e-002    2.5326e-004    4.2653e-002    1.4181e+001    9.9756e-002    1.4180e+001       [2,-1,0]    1
+    4.5212e-002    3.4089e-004    4.5152e-002    1.4601e+001    1.3049e-001    1.4592e+001       [2,0,-2]    1
+    4.7413e-002    1.8440e-004    4.7422e-002    1.4955e+001    6.8957e-002    1.4957e+001       [0,1,-4]    1
+    4.8711e-002    4.2391e-004    4.8728e-002    1.5160e+001    1.5643e-001    1.5163e+001        [1,0,4]    1
+    5.2455e-002    2.5871e-004    5.2407e-002    1.5736e+001    9.2061e-002    1.5729e+001       [0,2,-3]    1
+   </IndexingResults>
+
+   <OptimizedZeroShitParameters>
+    <Parameter>    1.7751e-002  </Parameter>  <Error>    2.6196e-002  </Error>
+   </OptimizedZeroShitParameters>
+  </LatticeCandidate>
+
+
+ </ConographOutput>
+</ZCodeParameters>
