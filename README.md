@@ -3,7 +3,7 @@
 # Instructions for Conograph CUI program
 [Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)], [[3](#References)] for the first time.
 
-<img alt="outline" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/7ee286db-aee6-40a3-8613-66fa6b806a69" width="50%">
+<img alt="outline" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/7ee286db-aee6-40a3-8613-66fa6b806a69" width="40%">
 
 ```
 Figure 1: three main stages of powder auto-indexing
