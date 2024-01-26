@@ -76,6 +76,10 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 ![flowchart_JP](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60)
 
+```
+図 2: CUIのフローチャート
+```
+
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
 1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, preprint.
