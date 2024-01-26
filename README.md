@@ -72,7 +72,11 @@ estimation of n required for computation of the de Wolff figure of merit Mn (Som
 
 Figure 2 is a flowchart of the CUI:
 
-![flowchart](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2)
+<img alt="flowchart" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2" width="40%">
+
+```
+Figure 2: flowchart of CUI
+```
 
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
