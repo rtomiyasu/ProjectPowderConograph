@@ -74,7 +74,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 図2 は CUI のフローチャートです:
 
-<img alt="flowchart_JP" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60" width="40%">
+<img alt="flowchart_JP" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60" width="50%">
 
 ```
 図 2: CUIのフローチャート
