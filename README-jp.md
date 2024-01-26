@@ -44,7 +44,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 1. "sample"フォルダの中の一つのフォルダをコピーし、 コピー先のフォルダ内の二つのXMLファイルの中身とファイル名"*.inp.xml"、IGOR テキストファイルの 0/1 フラグを適宜修正してください。 ファイル名"*.inp.xml"を変更した際は、"cntl.inp"のファイル名も併せて修正する必要があります。
 1. コマンドプロンプト、またはお使いのOSのターミナルウィンドウを立ち上げ、 上で変更した"cntl.inp"と同じフォルダにカレントフォルダを移動してください。
-1. "Conograph.exe"の絶対パスをコマンドラインから入力し、Conographwを実行します。
+1. "Conograph.exe"の絶対パスをコマンドラインから入力し、Conographを実行します。
 1. CUI は格子定数のリストを含む XML ファイル（[六方晶の例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index.xml)）を出力し、入力待ち状態に入ります。XML ファイルの最上部には、各々の figure of merit について最も良い値を得た格子定数がブラベー格子ごとに表示されます。そのすぐ下に、 得られた全ての格子定数の中で最も良い de Wolff figure of merit [[4](#References)] の値を得た格子定数が表示されます。
 
 #### 実行後に格子定数とゼロ点シフトを精密化する
