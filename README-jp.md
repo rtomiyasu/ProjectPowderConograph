@@ -98,7 +98,7 @@ Conograph projectのために粉末回折データを提供頂いた方々に感
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
 1. R. Oishi-Tomiyasu,<br>Robust powder auto-indexing using many peaks, J. Appl. Cryst. 47, pp. 593-598 (2014).
-1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, preprint.
+1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, Acta Cryst. A69, pp. 603-610 (2013).
 1. R. Oishi-Tomiyasu,<br>Reversed de Wolff figure of merit and its application to powder indexing solutions, J. Appl. Cryst. 46, pp. 1277-1282 (2013).
-1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A, 68, pp. 525-535 (2012).
+1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A68, pp. 525-535 (2012).
 1. P. M. de Wolff,<br>A simplified criterion for the reliability of a powder pattern indexing, J. Appl. Cryst., 1, pp. 108-113 (1968).
