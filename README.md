@@ -1,7 +1,7 @@
 [to Japanese](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/README-jp.md)
 
 # Instructions for Conograph CUI program
-[Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)], [[3](#References)] for the first time.
+[Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)], [[3](#References)].
 
 <img src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/cba8a371-a69c-4c28-8d85-f24e7ce0860f" width="400">
 
