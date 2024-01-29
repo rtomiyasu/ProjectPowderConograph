@@ -1,5 +1,7 @@
 [to Japanese](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/README-jp.md)
 
+[Download page of CONOGRAPH GUI version](https://z-code-software.com/downloads/)
+
 # Instructions for Conograph CUI program
 [Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)]--[[5](#References)].
 
