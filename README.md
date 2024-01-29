@@ -1,7 +1,7 @@
 [to Japanese](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/README-jp.md)
 
 # Instructions for Conograph CUI program
-[Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)], [[3](#References)].
+[Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)]--[[5](#References)].
 
 <img src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/cba8a371-a69c-4c28-8d85-f24e7ce0860f" width="400">
 
@@ -48,7 +48,7 @@ If you have not used Conograph before, then it is best to choose the regular sea
 1. Copy one of the folders from the sample folder. Modify the contents of the two xml-files, the name of *.inp.xml file, and the 0/1 flags in the IGOR text file if necessary. If you change the name of the *.inp.xml file, then it will be necessary to modify the contents of the cntl.inp.xml file accordingly.
 1. Open a command prompt or terminal window in your operating system. Change the current folder to the folder that contains the modified cntl.inp.xml file.
 1. Enter the absolute path to the Conograph.exe file on the command line and execute Conograph.
-1. The CUI outputs an XML file containing a list of candidate unit-cells ([Example of a hexagonal case](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index.xml)) and awaits input from the user. At the top of the XML output file, unit-cells with the best value for the figures of merit are presented for each Bravais type. Just below the unit-cells, the unit-cell with the best value for the de Wolff figure of merit [[4](#References)] from all of the obtained unit cells is presented.
+1. The CUI outputs an XML file containing a list of candidate unit-cells ([Example of a hexagonal case](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index.xml)) and awaits input from the user. At the top of the XML output file, unit-cells with the best value for the figures of merit are presented for each Bravais type. Just below the unit-cells, the unit-cell with the best value for the de Wolff figure of merit [[6](#References)] from all of the obtained unit cells is presented.
 #### Refinement of the unit cell parameters and the zero point shift after the execution of a powder auto-indexing search
 1. A number like 0403003 is associated with every unit-cell in the XML output file. If the user enters one of the numbers on the command line, the the unit-cell parameters and zero-point shift parameter are refined and the program outputs an IGOR text file ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2_lattice(Hexagonal_23.1%2C23.1%2C10.7%2C90%2C90%2C120_70.3).histogramIgor)) that includes the following information:
     1. copy of the contents in the input IGOR text file
@@ -83,16 +83,18 @@ You should send us a bug report with all of the input and output files attached 
 - conograph-bugs (at) ml.post.kek.jp
 
 ## How do I cite Conograph
-If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the bibliography.
-(Fullpapers about algorithms and results from Conograph are currently under revision as of 02/24/2013.)
+If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the list of references.
 
-- R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>New approach to indexing method of powder diffraction patterns using topographs, Zeitschrift für Kristallographie Supplements 30, pp.15--20.
+- (for use of GUI version) A. Esmaeili, T. Kamiyama, & R. Oishi-Tomiyasu,<br>"New functions and graphical user interface attached to powder indexing software", J. Appl. Cryst. 50 (2017), pp. 651-659.
+- (for use of CUI or source codes) R. Oishi-Tomiyasu,<br>"Robust powder auto-indexing using many peaks", J. Appl. Cryst. 47, pp. 593-598 (2014).
 
 ## Acknowledgments
 I would like to express my gratitude to those who offered powder diffraction patterns for the Conograph project.
 
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
-1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, preprint.
-1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A, 68, pp. 525-535 (2012).
+1. R. Oishi-Tomiyasu,<br>Robust powder auto-indexing using many peaks, J. Appl. Cryst. 47, pp. 593-598 (2014).
+1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, Acta Cryst. A69, pp. 603-610 (2013).
+1. R. Oishi-Tomiyasu,<br>Reversed de Wolff figure of merit and its application to powder indexing solutions, J. Appl. Cryst. 46, pp. 1277-1282 (2013).
+1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A68, pp. 525-535 (2012).
 1. P. M. de Wolff,<br>A simplified criterion for the reliability of a powder pattern indexing, J. Appl. Cryst., 1, pp. 108-113 (1968).
