@@ -84,9 +84,6 @@ If you use Conograph in your research then we strongly encourage you to include 
 
 - R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>New approach to indexing method of powder diffraction patterns using topographs, Zeitschrift für Kristallographie Supplements 30, pp.15--20.
 
-## About the copyright
-The versions of the source code are distributed as open source under the MIT license on the repository list of the Conograph project.
-
 ## Acknowledgments
 I would like to express my gratitude to those who offered powder diffraction patterns for the Conograph project.
 
