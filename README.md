@@ -69,8 +69,8 @@ As long as the IGOR Pro software is available, powder auto-indexing in the CUI i
 - Visual comparison between the powder diffraction pattern and the computed lines of the unit-cells is easier in the GUI.
 - In the CUI, solutions are sorted by the de Wolff figure of merit. In the GUI, the other sorting criteria can be chosen anytime after the enumeration stage.
 - The CUI executes the various functions as successive procedures. In the GUI, the computational time required for repeated execution may be shorter, because the various functions are available separately and independently. These functions include:
-estimation of the zero-point shift Δ2θ by the reflection pair method [[1](#References)] (The CUI program outputs several candidate values on the command line in the initial stage of powder auto-indexing.)
-estimation of n required for computation of the de Wolff figure of merit Mn (Some unit cells require n > 20 owing to existence of a dominant zone.)
+    1. estimation of the zero-point shift Δ2θ by the reflection pair method [[1](#References)] (The CUI program outputs several candidate values on the command line in the initial stage of powder auto-indexing.)
+    1. estimation of n required for computation of the de Wolff figure of merit Mn (Some unit cells require n > 20 owing to existence of a dominant zone.)
 - In order to use one of the above estimated values, it is necessary to terminate the CUI program once. Regarding a., this limitation of the CUI program is partly because use of Δ2θ = 0 is sufficient for many cases. (For example, Conograph has obtained successful results even in the case where the correct Δ2θ is 0.195°.)
 
 Figure 2 is a flowchart of the CUI:
