@@ -87,9 +87,10 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 - conograph-bugs (at) ml.post.kek.jp
 
 ## Conographの引用に関して
-Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします（Conographに関する原著論文は現在査読中です (2013/2/24)）。 Conograph の継続開発のための予算獲得にご協力ください。
+Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします。 Conograph の継続開発のための予算獲得にご協力ください。
 
-- R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
+- (GUI版) R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
+- (CUI版) R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
 
 ## 謝辞
 Conograph projectのために粉末回折データを提供頂いた方々に感謝します。
