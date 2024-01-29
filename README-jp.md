@@ -3,8 +3,7 @@
 # Conograph CUI プログラムの操作説明書
 以下では、オープンソースの粉末指数づけプログラム [Conogaph CUI Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win)について簡単に説明します。Conograph GUI は現在開発中です (2013/3/2)。 Conograph は粉末指数づけの新しい数学的手法を採用しており、現時点でその手法を紹介している文献に、[[2](#References)]と[[3](#References)]があります。
 
-<img alt="outline_JP" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/61c8335b-f1c1-4388-ae64-f13eff53a78e" width="40%">
-
+![outline_JP](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/61c8335b-f1c1-4388-ae64-f13eff53a78e)
 ```
 図 1: Conograph による粉末指数づけの３つの主要ステージ
 ```
@@ -44,7 +43,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 1. "sample"フォルダの中の一つのフォルダをコピーし、 コピー先のフォルダ内の二つのXMLファイルの中身とファイル名"*.inp.xml"、IGOR テキストファイルの 0/1 フラグを適宜修正してください。 ファイル名"*.inp.xml"を変更した際は、"cntl.inp"のファイル名も併せて修正する必要があります。
 1. コマンドプロンプト、またはお使いのOSのターミナルウィンドウを立ち上げ、 上で変更した"cntl.inp"と同じフォルダにカレントフォルダを移動してください。
-1. "Conograph.exe"の絶対パスをコマンドラインから入力し、Conographを実行します。
+1. "Conograph.exe"の絶対パスをコマンドラインから入力し、Conographwを実行します。
 1. CUI は格子定数のリストを含む XML ファイル（[六方晶の例](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index.xml)）を出力し、入力待ち状態に入ります。XML ファイルの最上部には、各々の figure of merit について最も良い値を得た格子定数がブラベー格子ごとに表示されます。そのすぐ下に、 得られた全ての格子定数の中で最も良い de Wolff figure of merit [[4](#References)] の値を得た格子定数が表示されます。
 
 #### 実行後に格子定数とゼロ点シフトを精密化する
@@ -74,11 +73,21 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 図2 は CUI のフローチャートです:
 
-<img alt="flowchart_JP" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60" width="50%">
+![flowchart_JP](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/242c8e45-caf0-4d0b-b7db-2ddafe39cd60)
 
-```
-図 2: CUIのフローチャート
-```
+## バグ報告のお願い
+コード改善のために、疑わしい事例を見つけられましたら、以下のアドレスまでご連絡頂けると助かります。
+その際、"LOG_CONOGRAPH.txt"を含む全ての入出力ファイルをご添付ください。
+
+- conograph-bugs (at) ml.post.kek.jp
+
+## Conograph の引用に関して
+Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします（Conographに関する原著論文は現在査読中です (2013/2/24)）。 Conograph の継続開発のための予算獲得にご協力ください。
+
+- R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
+
+## 謝辞
+Conograph projectのために粉末回折データを提供頂いた方々に感謝します。
 
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).

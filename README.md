@@ -3,8 +3,7 @@
 # Instructions for Conograph CUI program
 [Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win) is the initial release of the core program of the Conograph software which executes powder auto-indexing by the method introduced in [[2](#References)], [[3](#References)] for the first time.
 
-<img alt="outline" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/7ee286db-aee6-40a3-8613-66fa6b806a69" width="40%">
-
+![outline](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/7ee286db-aee6-40a3-8613-66fa6b806a69)
 ```
 Figure 1: three main stages of powder auto-indexing
 ```
@@ -72,11 +71,24 @@ estimation of n required for computation of the de Wolff figure of merit Mn (Som
 
 Figure 2 is a flowchart of the CUI:
 
-<img alt="flowchart" src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2" width="40%">
+![flowchart](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2)
 
-```
-Figure 2: flowchart of CUI
-```
+## How do I report bugs?
+You should send us a bug report with all of the input and output files attached (including LOG_CONOGRAPH.txt) to the following e-mail address:
+
+- conograph-bugs (at) ml.post.kek.jp
+
+## How do I cite Conograph?
+If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the bibliography.
+(Fullpapers about algorithms and results from Conograph are currently under revision as of 02/24/2013.)
+
+- R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>New approach to indexing method of powder diffraction patterns using topographs, Zeitschrift für Kristallographie Supplements 30, pp.15--20.
+
+## About the copyright
+The versions of the source code are distributed as open source under the MIT license on the repository list of the Conograph project.
+
+## Acknowledgments
+I would like to express my gratitude to those who offered powder diffraction patterns for the Conograph project.
 
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
