@@ -29,6 +29,10 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
     - 正しい解はどれですか? (figure of meritを用いた判定方法)
     - 粉末指数づけにおける解の一意性
 - [CUI と GUI の主な違い](#CUIとGUIの主な違い)
+- [バグ報告のお願い](#バグ報告のお願い)
+- [Conographの引用に関して](#Conographの引用に関して)
+- [謝辞](#謝辞)
+
 
 ### Conograph_CUIの使い方
 #### Conographを実行する
@@ -81,7 +85,7 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 
 - conograph-bugs (at) ml.post.kek.jp
 
-## Conograph の引用に関して
+## Conographの引用に関して
 Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします（Conographに関する原著論文は現在査読中です (2013/2/24)）。 Conograph の継続開発のための予算獲得にご協力ください。
 
 - R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.

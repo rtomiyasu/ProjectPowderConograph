@@ -30,6 +30,9 @@ If you have not used Conograph before, then it is best to choose the regular sea
     - The powder auto-indexing outputs many unit-cells. How can I find the correct one? (Properties of figures of merit)
     - Uniqueness of solutions in powder auto-indexing
 - [Differences between CUI and GUI](#Differences_between_CUI_and_GUI)
+- [How do I report bugs?](#how_do_I_report_bugs)
+- [How do I cite COnograph?](#How_do_I_cite_Conograph)
+- [Acknowledgments](#Acknowledgments)
 
 ### How_to_use_the_Conograph_Command_User_Interface
 #### Starting_Conograph
@@ -73,12 +76,12 @@ Figure 2 is a flowchart of the CUI:
 
 ![flowchart](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2)
 
-## How do I report bugs?
+## How_do_I_report_bugs
 You should send us a bug report with all of the input and output files attached (including LOG_CONOGRAPH.txt) to the following e-mail address:
 
 - conograph-bugs (at) ml.post.kek.jp
 
-## How do I cite Conograph?
+## How_do_I_cite_Conograph
 If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the bibliography.
 (Fullpapers about algorithms and results from Conograph are currently under revision as of 02/24/2013.)
 
