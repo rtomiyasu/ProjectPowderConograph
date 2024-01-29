@@ -35,8 +35,8 @@ If you have not used Conograph before, then it is best to choose the regular sea
 - [How do I cite Conograph?](#How_do_I_cite_Conograph)
 - [Acknowledgments](#Acknowledgments)
 
-### How_to_use_the_Conograph_Command_User_Interface
-#### Starting_Conograph
+### How to use the Conograph Command User Interface
+#### Starting Conograph
 1. The Conograph program requires the following three input files. (Examples can be found in the sample folder.)
     - A *.inp.xml file that includes information about the input parameters ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/Cimetidine-SR.inp.xml))
     - A cntl.inp.xml that includes the names of the *.inp.xml file and the output file ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/sample/sample5/cntl.inp.xml))
@@ -49,7 +49,7 @@ If you have not used Conograph before, then it is best to choose the regular sea
 1. Open a command prompt or terminal window in your operating system. Change the current folder to the folder that contains the modified cntl.inp.xml file.
 1. Enter the absolute path to the Conograph.exe file on the command line and execute Conograph.
 1. The CUI outputs an XML file containing a list of candidate unit-cells ([Example of a hexagonal case](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index.xml)) and awaits input from the user. At the top of the XML output file, unit-cells with the best value for the figures of merit are presented for each Bravais type. Just below the unit-cells, the unit-cell with the best value for the de Wolff figure of merit [[4](#References)] from all of the obtained unit cells is presented.
-#### Refinement_of_the_unit_cell_parameters_and_the_zero_point_shift_after_the_execution_of_a_powder_auto_indexing_search
+#### Refinement of the unit cell parameters and the zero point shift after the execution of a powder auto-indexing search
 1. A number like 0403003 is associated with every unit-cell in the XML output file. If the user enters one of the numbers on the command line, the the unit-cell parameters and zero-point shift parameter are refined and the program outputs an IGOR text file ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2_lattice(Hexagonal_23.1%2C23.1%2C10.7%2C90%2C90%2C120_70.3).histogramIgor)) that includes the following information:
     1. copy of the contents in the input IGOR text file
     1. positions of computed lines of the input unit-cell parameters
@@ -58,10 +58,10 @@ If you have not used Conograph before, then it is best to choose the regular sea
     - an XML file including information about refined unit-cell parameters and zero-point shifts ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2.index2.xml))
     - an IGOR text file unifying the IGOR text files output during refinement ([Example](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/figures/sample2_lattices.histogramIgor))
 
-### Tips_for_peak_searching
+### Tips for peak searching
 If you have not used Conograph before, then our advice in peak search is to pick up all the diffraction peaks as uniformly as possible on the basis of their peak-heights. (Such results will be obtained easily by using the [peak search program](https://github.com/rtomiyasu/PeakSearch/tree/main) equipped with Conograph.) The enumeration algorithm of Conograph then determines in a comparatively short time which combinations of peaks provide better solutions. Unless you have any prior information about diffraction peaks, it is better to avoid reducing the quality of input information by selecting peaks or removing overlapped peaks artificiality.
 
-### Differences_between_CUI_and_GUI
+### Differences between CUI and GUI
 As long as the IGOR Pro software is available, powder auto-indexing in the CUI is not difficult. The following are the chief advantages of the GUI.
 
 - A peak search program is incorporated in the GUI.
@@ -77,12 +77,12 @@ Figure 2 is a flowchart of the CUI:
 
 <img src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/b1eef022-7581-40ff-97c7-a9a0c4c68090" width="600">
 
-## How_do_I_report_bugs
+## How do I report bugs
 You should send us a bug report with all of the input and output files attached (including LOG_CONOGRAPH.txt) to the following e-mail address:
 
 - conograph-bugs (at) ml.post.kek.jp
 
-## How_do_I_cite_Conograph
+## How do I cite Conograph
 If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the bibliography.
 (Fullpapers about algorithms and results from Conograph are currently under revision as of 02/24/2013.)
 
