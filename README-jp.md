@@ -1,6 +1,6 @@
 [to English](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/README.md)
 
-[GUI版CONOGRAPHのダウンロードページ](https://z-code-software.com/downloads/)
+[Conograph GUI版のダウンロードページ](https://z-code-software.com/downloads/)
 
 # Conograph CUI プログラムの操作説明書
 以下では、オープンソースの粉末指数づけプログラム [Conogaph CUI Version 0.99](https://github.com/rtomiyasu/ProjectPowderConograph/tree/main/Conograph1_0_00_win)について簡単に説明します。Conograph GUI は現在開発中です (2013/3/2)。 Conograph は粉末指数づけの新しい数学的手法を採用しており、その手法を紹介している文献に、[[2](#References)]--[[5](#References)]があります。
