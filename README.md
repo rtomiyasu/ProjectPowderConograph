@@ -77,7 +77,7 @@ Figure 2 is a flowchart of the CUI:
 
 ![flowchart](https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/054785a7-46e1-41d3-a7d7-fac3bce1dfa2)
 
-<img src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/b1eef022-7581-40ff-97c7-a9a0c4c68090" width="500">
+<img src="https://github.com/rtomiyasu/ProjectPowderConograph/assets/149344913/b1eef022-7581-40ff-97c7-a9a0c4c68090" width="600">
 
 ## How_do_I_report_bugs
 You should send us a bug report with all of the input and output files attached (including LOG_CONOGRAPH.txt) to the following e-mail address:
