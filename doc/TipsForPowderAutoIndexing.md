@@ -1,4 +1,4 @@
-[to Japanese](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/Conograph1_0_00_win/doc/TipsForPowderAutoIndexing_JP.md)
+[to Japanese](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/doc/TipsForPowderAutoIndexing_JP.md)
 
 # Tips for powder auto-indexing using Conograph
 - [A table of parameters in the *.inp.xml file](#Table_1_Parameter)
