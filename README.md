@@ -31,7 +31,7 @@ If you have not used Conograph before, then it is best to choose the regular sea
     - Uniqueness of solutions in powder auto-indexing
 - [Differences between CUI and GUI](#Differences_between_CUI_and_GUI)
 - [How do I report bugs?](#how_do_I_report_bugs)
-- [How do I cite COnograph?](#How_do_I_cite_Conograph)
+- [How do I cite Conograph?](#How_do_I_cite_Conograph)
 - [Acknowledgments](#Acknowledgments)
 
 ### How_to_use_the_Conograph_Command_User_Interface
