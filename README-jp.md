@@ -89,14 +89,16 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 ## Conographの引用に関して
 Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします。 Conograph の継続開発のための予算獲得にご協力ください。
 
-- (GUI版) R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
-- (CUI版) R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
+- (GUI版の引用文献) R. Oishi, M. Yonemura, T. Ishigaki, A. Hoshikawa, K. Mori, T. Morishima, S. Torii, T. Kamiyama,<br>"New approach to indexing method of powder diffraction patterns using topographs", Zeitschrift für Kristallographie Supplements 30 (2009), pp.15--20.
+- (CUI版の引用文献) R. Oishi-Tomiyasu,<br>"Robust powder auto-indexing using many peaks", J. Appl. Cryst. 47, pp. 593-598 (2014).
 
 ## 謝辞
 Conograph projectのために粉末回折データを提供頂いた方々に感謝します。
 
 ## References
 1. C. Dong, F. Wu, H. Chen,<br>Correction of zero shift in powder diffraction patterns using the reflection-pair method, J. Appl. Cryst., 32, pp. 850-853 (1999).
+1. R. Oishi-Tomiyasu,<br>Robust powder auto-indexing using many peaks, J. Appl. Cryst. 47, pp. 593-598 (2014).
 1. R. Oishi-Tomiyasu,<br>Distribution rules of crystallographic systematic absences on the Conway topograph and their application to powder auto-indexing, preprint.
+1. R. Oishi-Tomiyasu,<br>Reversed de Wolff figure of merit and its application to powder indexing solutions, J. Appl. Cryst. 46, pp. 1277-1282 (2013).
 1. R. Oishi-Tomiyasu,<br>Rapid Bravais-lattice determination algorithm for lattice constants containing large observation errors, Acta Cryst. A, 68, pp. 525-535 (2012).
 1. P. M. de Wolff,<br>A simplified criterion for the reliability of a powder pattern indexing, J. Appl. Cryst., 1, pp. 108-113 (1968).
