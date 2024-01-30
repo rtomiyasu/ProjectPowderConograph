@@ -17,6 +17,8 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 初めて Conograph を使用する際は、難しいケースでも入力する探索パラメータの変更の必要がほとんどない「メモリ使用量優先探索」を選択することをお勧めしています。ただし、「速さ優先探索」でも、ユニットセルが小さいまたは対称性が高いといった簡単なケースでは、 入力パラメータの変更が必要ないことが多いです。 「速さ優先探索」と「メモリ使用量優先探索」の違いは、[ここ](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/doc/TipsForPowderAutoIndexing_JP.md#Quick_searchとregular_searchの主な違い)でもう少し詳しく説明しています。
 
 ## NEWS
+### 2024/1/31
+ソースコードの配布ページを OSDN から GitHub に移動しました.
 ### 2016/9/7
 - 底心格子に関する出力形式に関する誤りを訂正しました。
 
