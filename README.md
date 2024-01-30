@@ -18,7 +18,6 @@ When the regular search option is selected, Conograph completes all of the proce
 If you have not used Conograph before, then it is best to choose the regular search option, because this allows you to use the default searching parameters without changes even in difficult cases. The quick search option without modifications to the parameters also works well if the unit-cell has a small volume or high symmetry. The differences between the two searches is explained [here](https://github.com/rtomiyasu/ProjectPowderConograph/blob/main/doc/TipsForPowderAutoIndexing.md#What_are_the_differences_between_the_quick_and_regular_search_options).
 
 ## NEWS
-## NEWS
 ### 2024/1/31
 - The web page of the source codes was moved from OSDN to GitHub.
 ### 2016/9/7
