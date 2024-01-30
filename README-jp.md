@@ -91,8 +91,8 @@ Conograph は中性子飛行時間法を含む任意の粉末回折データに�
 ## Conographの引用に関して
 Conograph を用いて得られた研究成果を発表される際には、以下の文献を引用して頂けるようお願いいたします。 Conograph の継続開発のための予算獲得にご協力ください。
 
-- (GUI版の引用文献) A. Esmaeili, T. Kamiyama, & R. Oishi-Tomiyasu,<br>"New functions and graphical user interface attached to powder indexing software", J. Appl. Cryst. 50 (2017), pp. 651-659.
-- (CUI版の引用文献) R. Oishi-Tomiyasu,<br>"Robust powder auto-indexing using many peaks", J. Appl. Cryst. 47, pp. 593-598 (2014).
+- (Conograph GUIの使用) A. Esmaeili, T. Kamiyama, & R. Oishi-Tomiyasu,<br>"New functions and graphical user interface attached to powder indexing software", J. Appl. Cryst. 50 (2017), pp. 651-659.
+- (CUI, ソースコードの使用) R. Oishi-Tomiyasu,<br>"Robust powder auto-indexing using many peaks", J. Appl. Cryst. 47, pp. 593-598 (2014).
 
 ## 謝辞
 Conograph projectのために粉末回折データを提供頂いた方々に感謝します。
