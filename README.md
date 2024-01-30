@@ -87,7 +87,7 @@ You should send us a bug report with all of the input and output files attached 
 ## How do I cite Conograph
 If you use Conograph in your research then we strongly encourage you to include a citation of the following article in the list of references.
 
-- (for use of GUI version) A. Esmaeili, T. Kamiyama, & R. Oishi-Tomiyasu,<br>"New functions and graphical user interface attached to powder indexing software", J. Appl. Cryst. 50 (2017), pp. 651-659.
+- (for use of Conograph GUI) A. Esmaeili, T. Kamiyama, & R. Oishi-Tomiyasu,<br>"New functions and graphical user interface attached to powder indexing software", J. Appl. Cryst. 50 (2017), pp. 651-659.
 - (for use of CUI or source codes) R. Oishi-Tomiyasu,<br>"Robust powder auto-indexing using many peaks", J. Appl. Cryst. 47, pp. 593-598 (2014).
 
 ## Acknowledgments
